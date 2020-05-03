@@ -1,0 +1,81 @@
+﻿@using ECommerce.Web.Areas.Admin.Models
+@model CustomerModel
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_HomePage.cshtml";
+}
+
+<header class="page-header">
+    <h2>Customer Add</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="@Url.Action("Index","Home")">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Customer</span></li>
+            <li><span>Customer Add</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        @using (Html.BeginForm("Add", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <section class="content-body">
+                <header class="panel-heading">
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-plus pr-sm"></i> Add</button>
+                    </div>
+
+                    <h2 class="panel-title">Add Customer</h2>
+                </header>
+                <div class="panel-body">
+                    <div class="form-horizontal form-bordered">
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="inputFocus">First Name</label>
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="inputFocus">Last Name</label>
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="inputFocus">Email</label>
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="inputFocus">Password</label>
+                            <div class="col-md-4">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="inputFocus">Active</label>
+                            <div class="col-md-4">
+                                @Html.CheckBoxFor(model => model.Active, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+        }
+    </div>
+</div>
+

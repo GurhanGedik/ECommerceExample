@@ -1,0 +1,59 @@
+﻿@using ECommerce.Web.Areas.Admin.Models
+@model ManufacturerListModel
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Admin/Views/Shared/_HomePage.cshtml";
+}
+
+<header class="page-header">
+    <h2>Manufacturer List</h2>
+
+    <div class="right-wrapper pull-right">
+        <ol class="breadcrumbs">
+            <li>
+                <a href="@Url.Action("Index","Home")">
+                    <i class="fa fa-home"></i>
+                </a>
+            </li>
+            <li><span>Manufacturer</span></li>
+            <li><span>Manufacturer List</span></li>
+        </ol>
+
+        <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
+    </div>
+</header>
+
+
+<section class="panel">
+    <header class="panel-heading">
+        <div class="panel-actions">
+            <button onclick="location.href='@Url.Action("Add", "Manufacturer")'" type="button" class="btn btn-primary"><i class="fa fa-plus pr-sm"></i> Add Category</button>
+        </div>
+
+        <h2 class="panel-title">List</h2>
+    </header>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped mb-none" id="datatable-default">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Active</th>
+                    <th class="hidden-phone">Edit / Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Manufacturer)
+                {
+                    <tr class="gradeX">
+                        <td>@item.Name</td>
+                        <td>@item.Published</td>
+                        <td class=" hidden-phone">
+                            @Html.ActionLink("Edit", "Edit", new { @id = item.Id }, new { @class = "mb-xs mt-xs mr-xs btn btn-sm btn-warning" })
+                            @Html.ActionLink("Delete", "Delete", new { @id = item.Id }, new { @class = "mb-xs mt-xs mr-xs btn btn-sm btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
