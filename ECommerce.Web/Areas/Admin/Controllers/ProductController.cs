@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ECommerce.Web.Areas.Admin.Controllers
 {
+    
     public class ProductController : Controller
     {
         // GET: Admin/Product

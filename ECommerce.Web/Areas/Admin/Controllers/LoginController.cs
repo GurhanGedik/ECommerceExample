@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace ECommerce.Web.Areas.Admin.Controllers
 {
@@ -16,13 +17,14 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         {
             return RedirectToAction("SingIn");
         }
-
+        [AllowAnonymous]
         public ActionResult SingIn()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult SingIn(LoginModel model)
         {
@@ -32,6 +34,7 @@ namespace ECommerce.Web.Areas.Admin.Controllers
             {
                 Session.Add("FirstName", User.FirstName);
                 Session.Add("LastName", User.LastName);
+                FormsAuthentication.SetAuthCookie(User.Email, false);
                 return RedirectToAction("Index", "Home");
             }
 
@@ -43,6 +46,7 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         public ActionResult SingOut()
         {
             Session.Clear();
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }
     }
