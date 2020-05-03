@@ -15,11 +15,7 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         public ActionResult List()
         {
             var products = db.Products.Where(x => x.Deleted == false).ToList();
-            var categorys = db.Categories.ToList();
-            var manufactures = db.Manufacturers.ToList();
-
             ProductListModel model = new ProductListModel();
-
             foreach (var product in products)
             {
                 var productModel = new ProductModel();
@@ -30,14 +26,8 @@ namespace ECommerce.Web.Areas.Admin.Controllers
                 productModel.Description = product.Description;
                 productModel.Active = product.Active;
                 productModel.Barcode = product.Barcode;
-                foreach (var category in categorys.Where(x => x.Id == product.CategoryId))
-                {
-                    productModel.CategoryName = category.Name;
-                }
-                foreach (var manufacture in manufactures.Where(x => x.Id == product.ManufacturerId))
-                {
-                    productModel.ManufactureName = manufacture.Name;
-                }
+                productModel.CategoryName = product.Category.Name;
+                productModel.ManufactureName = product.Manufacturer.Name;
 
                 model.Products.Add(productModel);
             }
@@ -47,28 +37,27 @@ namespace ECommerce.Web.Areas.Admin.Controllers
 
         public ActionResult Add()
         {
-            List<SelectListItem> catList =
-                (from i in db.Categories.Where(x => x.Deleted == false).ToList()
-                 select new SelectListItem
-                 {
-                     Text = i.Name,
-                     Value = i.Id.ToString()
-                 }).ToList();
-            ViewBag.CategoryList = catList;
+            var model = new ProductModel();
+            var categories = db.Categories.Where(x => x.Deleted == false).ToList();
+            var manufacturers = db.Manufacturers.Where(x => x.Deleted == false).ToList();
+
+            model.AvailableCategories = categories.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
 
 
-            List<SelectListItem> manufactureList =
-                (from i in db.Manufacturers.Where(x => x.Deleted == false).ToList()
-                 select new SelectListItem
-                 {
-                     Text = i.Name,
-                     Value = i.Id.ToString()
-                 }).ToList();
-            ViewBag.ManufacturerList = manufactureList;
+            model.AvailableManufacturers = manufacturers.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
 
 
 
-            return View();
+
+            return View(model);
         }
 
         [HttpPost]
@@ -96,29 +85,23 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         {
             ProductModel model = new ProductModel();
             var product = db.Products.SingleOrDefault(x => x.Id == id);
+            var categories = db.Categories.Where(x => x.Deleted == false).ToList();
+            var manufacturers = db.Manufacturers.Where(x => x.Deleted == false).ToList();
 
-            List<SelectListItem> catList =
-                (from i in db.Categories.Where(x => x.Deleted == false).ToList()
-                 select new SelectListItem
-                 {
-                     Text = i.Name,
-                     Value = i.Id.ToString(),
-                     Selected = i.Id == product.CategoryId ? true : false
-                 }).ToList();
-            ViewBag.CategoryList = catList;
+            model.AvailableCategories = categories.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
 
 
-            List<SelectListItem> manufactureList =
-                (from i in db.Manufacturers.Where(x => x.Deleted == false).ToList()
-                 select new SelectListItem
-                 {
-                     Text = i.Name,
-                     Value = i.Id.ToString(),
-                     Selected = i.Id == product.ManufacturerId ? true : false
-                 }).ToList();
-            ViewBag.ManufacturerList = manufactureList;
+            model.AvailableManufacturers = manufacturers.Select(x => new SelectListItem
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
 
-
+            
 
             model.Id = product.Id;
             model.ManufactureId = product.ManufacturerId;

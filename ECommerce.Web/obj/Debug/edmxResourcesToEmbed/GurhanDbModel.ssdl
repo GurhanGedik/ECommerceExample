@@ -6,7 +6,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" />
-    <Property Name="Published" Type="bit" />
+    <Property Name="Published" Type="bit" Nullable="false" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
     <Property Name="UpdatedOnUtc" Type="datetime" />
@@ -20,7 +20,7 @@
     <Property Name="LastName" Type="nvarchar(max)" />
     <Property Name="Email" Type="nvarchar(max)" />
     <Property Name="Password" Type="nvarchar(max)" />
-    <Property Name="Active" Type="bit" />
+    <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
   </EntityType>
@@ -30,7 +30,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" />
-    <Property Name="Published" Type="bit" />
+    <Property Name="Published" Type="bit" Nullable="false" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
     <Property Name="UpdatedOnUtc" Type="datetime" />
@@ -47,15 +47,47 @@
     <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
     <Property Name="CategoryId" Type="int" />
     <Property Name="ManufacturerId" Type="int" />
-    <Property Name="Active" Type="bit" />
+    <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
     <Property Name="UpdateOnUtc" Type="datetime" />
   </EntityType>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Manufacturer">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="GurhanModelStoreContainer">
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Manufacturer" Association="Self.FK_Product_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

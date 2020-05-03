@@ -6,10 +6,11 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Published" Type="Boolean" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="GurhanModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -20,7 +21,7 @@
     <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Active" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" Nullable="false" />
   </EntityType>
@@ -30,16 +31,25 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Published" Type="Boolean" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" Nullable="false" />
     <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="GurhanModel.FK_Product_Manufacturer" FromRole="Manufacturer" ToRole="Product" />
   </EntityType>
   <EntityContainer Name="GurhanDbEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
     <EntitySet Name="Products" EntityType="GurhanModel.Product" />
+    <AssociationSet Name="FK_Product_Category" Association="GurhanModel.FK_Product_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Manufacturer" Association="GurhanModel.FK_Product_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Product">
     <Key>
@@ -53,9 +63,35 @@
     <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="CategoryId" Type="Int32" />
     <Property Name="ManufacturerId" Type="Int32" />
-    <Property Name="Active" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Category" Relationship="GurhanModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="Manufacturer" Relationship="GurhanModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
   </EntityType>
+  <Association Name="FK_Product_Category">
+    <End Type="GurhanModel.Category" Role="Category" Multiplicity="0..1" />
+    <End Type="GurhanModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Manufacturer">
+    <End Type="GurhanModel.Manufacturer" Role="Manufacturer" Multiplicity="0..1" />
+    <End Type="GurhanModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -74,14 +74,14 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label" for="inputFocus">Category</label>
                             <div class="col-md-4">
-                                @Html.DropDownListFor(model => model.CategoryId, (List<SelectListItem>)ViewBag.CategoryList, new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.CategoryId, Model.AvailableCategories, new { @class = "form-control" })
 
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label" for="inputFocus">Manufacturer</label>
                             <div class="col-md-4">
-                                @Html.DropDownListFor(model => model.ManufactureId, (List<SelectListItem>)ViewBag.ManufacturerList, new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.ManufactureId, Model.AvailableManufacturers, new { @class = "form-control" })
 
                             </div>
                         </div>

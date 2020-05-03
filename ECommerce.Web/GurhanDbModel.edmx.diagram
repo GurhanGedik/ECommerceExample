@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="GurhanModel.Customer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GurhanModel.Manufacturer" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GurhanModel.Product" Width="1.5" PointX="6.875" PointY="0.75" />
+        <AssociationConnector Association="GurhanModel.FK_Product_Category" />
+        <AssociationConnector Association="GurhanModel.FK_Product_Manufacturer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

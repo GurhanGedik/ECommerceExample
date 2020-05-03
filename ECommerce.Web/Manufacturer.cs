@@ -14,11 +14,20 @@ namespace ECommerce.Web
     
     public partial class Manufacturer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Manufacturer()
+        {
+            this.Products = new HashSet<Product>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Published { get; set; }
         public bool Deleted { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
         public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

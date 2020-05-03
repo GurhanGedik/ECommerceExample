@@ -19,12 +19,15 @@ namespace ECommerce.Web
         public string Description { get; set; }
         public string Barcode { get; set; }
         public string Sku { get; set; }
-        public decimal Price { get; set; }
-        public int CategoryId { get; set; }
-        public int ManufacturerId { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<int> CategoryId { get; set; }
+        public Nullable<int> ManufacturerId { get; set; }
         public bool Active { get; set; }
         public bool Deleted { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
         public Nullable<System.DateTime> UpdateOnUtc { get; set; }
+    
+        public virtual Category Category { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; }
     }
 }
