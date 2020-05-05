@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace ECommerce.Web.Areas.Admin.Controllers
 {
     
-    public class ProductController : Controller
+    public class ProductController : BaseAdminController
     {
         // GET: Admin/Product
         private GurhanDbEntities db = new GurhanDbEntities();

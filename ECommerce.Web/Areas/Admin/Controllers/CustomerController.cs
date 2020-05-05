@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace ECommerce.Web.Areas.Admin.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomerController : BaseAdminController
     {
         private GurhanDbEntities db = new GurhanDbEntities();
 

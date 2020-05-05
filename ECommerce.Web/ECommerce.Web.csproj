@@ -1662,17 +1662,16 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManufacturerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Models\CategoryListModel.cs" />
     <Compile Include="Areas\Admin\Models\CategoryModel.cs" />
     <Compile Include="Areas\Admin\Models\CustomerListModel.cs" />
     <Compile Include="Areas\Admin\Models\CustomerModel.cs" />
-    <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Areas\Admin\Models\ManufacturerListModel.cs" />
     <Compile Include="Areas\Admin\Models\ManufacturerModel.cs" />
     <Compile Include="Areas\Admin\Models\ProductListModel.cs" />
@@ -1680,7 +1679,9 @@
     <Compile Include="Category.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
@@ -1705,6 +1706,10 @@
     <Compile Include="Manufacturer.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\HomePageModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
@@ -1984,10 +1989,13 @@
     <Content Include="Areas\Admin\Views\Manufacturer\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Manufacturer\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\List.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\SingIn.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_HomePage.cshtml" />
+    <Content Include="Views\Login\SingIn.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Category\CategoryDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1997,8 +2005,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

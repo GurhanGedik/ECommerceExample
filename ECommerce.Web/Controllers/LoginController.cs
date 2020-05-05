@@ -1,4 +1,4 @@
-﻿using ECommerce.Web.Areas.Admin.Models;
+﻿using ECommerce.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,25 +6,23 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace ECommerce.Web.Areas.Admin.Controllers
+namespace ECommerce.Web.Controllers
 {
     public class LoginController : Controller
     {
-        private GurhanDbEntities db = new GurhanDbEntities();
-
-        // GET: Admin/Login
+        GurhanDbEntities db = new GurhanDbEntities();
+        // GET: Login
         public ActionResult Index()
         {
             return RedirectToAction("SingIn");
         }
-        [AllowAnonymous]
+
         public ActionResult SingIn()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult SingIn(LoginModel model)
         {
@@ -34,7 +32,9 @@ namespace ECommerce.Web.Areas.Admin.Controllers
             {
                 Session.Add("FirstName", User.FirstName);
                 Session.Add("LastName", User.LastName);
-                FormsAuthentication.SetAuthCookie(User.Email, false);
+                //TODO: Auth Cookie de tutacağımız şeyi neye göre belirliyoruz? Email tututum ama aslında ne tutulmalı?
+                FormsAuthentication.SetAuthCookie(User.Email, true);
+
                 return RedirectToAction("Index", "Home");
             }
 

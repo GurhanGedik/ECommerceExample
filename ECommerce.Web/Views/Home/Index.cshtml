@@ -1,0 +1,14 @@
+﻿@using ECommerce.Web.Models
+@model HomePageModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+<h2>Categorys</h2>
+@foreach (var item in Model.Categories)
+{
+    <a href="../Category/CategoryDetail/@item.Id">@item.Name</a>
+    <br />
+}
+
+

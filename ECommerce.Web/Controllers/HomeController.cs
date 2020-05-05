@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerce.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,17 @@ namespace ECommerce.Web.Controllers
 {
     public class HomeController : Controller
     {
+        GurhanDbEntities db = new GurhanDbEntities();
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            HomePageModel model = new HomePageModel();
+            model.Categories = db.Categories.Where(x => x.Deleted == false).ToList();
+
+           
+
+
+            return View(model);
         }
     }
 }

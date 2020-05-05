@@ -1,0 +1,41 @@
+﻿@using ECommerce.Web.Models
+@model CategoryModel
+@{
+    ViewBag.Title = "CategoryDetail";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+
+                        <section class="panel">
+                            <header class="panel-heading">
+                                <div class="panel-actions">
+                                </div>
+
+                                <h2 class="panel-title">Products</h2>
+                            </header>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-striped mb-none" id="datatable-default">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Sku</th>
+                                            <th>Barcode</th>
+                                            <th>Price</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Products)
+                                        {
+                                            <tr class="gradeX">
+                                                <td>@item.Name</td>
+                                                <td>@item.Sku</td>
+                                                <td>@item.Barcode</td>
+                                                <td>@item.Price</td>
+                                                <td>@item.Description</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>

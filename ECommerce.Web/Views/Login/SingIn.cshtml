@@ -1,17 +1,17 @@
-﻿@using ECommerce.Web.Areas.Admin.Models
+﻿@using ECommerce.Web.Models;
 @model LoginModel
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Areas/Admin/Views/Shared/_HomePage.cshtml";
+    ViewBag.Title = "SingIn";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
 }
 
-<section class="body-sign" style="margin-top: -150px;">
+<section class="body-sign">
     <div class="center-sign">
         <a href="/" class="logo pull-left">
 
         </a>
-        
-        
+
+
         <div class="panel panel-sign">
             <div class="panel-title-sign mt-xl text-right">
                 <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
@@ -84,13 +84,3 @@
         <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2018. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
     </div>
 </section>
-
-<script>
-    window.onload = function () {
-
-        var myobj = document.getElementById("sidebar-left");
-        myobj.remove();
-        var myobj2 = document.getElementById("hdr");
-        myobj2.remove();
-    };
-</script>

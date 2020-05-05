@@ -20,12 +20,6 @@ namespace ECommerce.Web.Areas.Admin
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
             context.MapRoute(
-                "Login",
-                "Login",
-                new { controller = "Login", action = "Index", id = UrlParameter.Optional }
-            );
-
-            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
