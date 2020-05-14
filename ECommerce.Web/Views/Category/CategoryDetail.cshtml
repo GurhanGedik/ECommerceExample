@@ -28,7 +28,7 @@
                                         @foreach (var item in Model.Products)
                                         {
                                             <tr class="gradeX">
-                                                <td>@item.Name</td>
+                                                <td><a href="@Url.Action("ProductDetail","Product", new { id = item.Id })">@item.Name</a></td>
                                                 <td>@item.Sku</td>
                                                 <td>@item.Barcode</td>
                                                 <td>@item.Price</td>

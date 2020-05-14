@@ -14,8 +14,6 @@ namespace ECommerce.Web.Models
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool Published { get; set; }
-
 
         public List<ProductModel> Products { get; set; }
     }

@@ -10,9 +10,9 @@ namespace ECommerce.Web.Models
     {
         public HomePageModel()
         {
-            Categories = new List<Category>();
+            Categories = new List<CategoryModel>();
         }
 
-        public List<Category> Categories { get; set; }
+        public List<CategoryModel> Categories { get; set; }
     }
 }

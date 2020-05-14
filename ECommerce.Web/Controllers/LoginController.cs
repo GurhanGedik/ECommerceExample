@@ -32,14 +32,12 @@ namespace ECommerce.Web.Controllers
             {
                 Session.Add("FirstName", User.FirstName);
                 Session.Add("LastName", User.LastName);
-                //TODO: Auth Cookie de tutacağımız şeyi neye göre belirliyoruz? Email tututum ama aslında ne tutulmalı?
                 FormsAuthentication.SetAuthCookie(User.Email, true);
 
                 return RedirectToAction("Index", "Home");
             }
 
             ViewBag.Error = "Bilgiler Hatalı";
-            //test
             return View();
         }
 

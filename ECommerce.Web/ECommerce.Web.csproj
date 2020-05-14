@@ -1682,6 +1682,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
@@ -1996,6 +1997,7 @@
     <Content Include="Views\Login\SingIn.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Category\CategoryDetail.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

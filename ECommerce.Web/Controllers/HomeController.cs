@@ -13,12 +13,17 @@ namespace ECommerce.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            var categorys = db.Categories.Where(x => x.Deleted == false).ToList();
             HomePageModel model = new HomePageModel();
-            model.Categories = db.Categories.Where(x => x.Deleted == false).ToList();
 
-           
-
-
+            foreach (var category in categorys)
+            {
+                CategoryModel cat = new CategoryModel();
+                cat.Id = category.Id;
+                cat.Name = category.Name;
+                model.Categories.Add(cat);
+                
+            }
             return View(model);
         }
     }
