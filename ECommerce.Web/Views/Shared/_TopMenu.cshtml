@@ -1,0 +1,21 @@
+﻿@using ECommerce.Web.Models
+@model HomePageModel
+
+
+
+
+<div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1">
+    <nav class="collapse">
+        <ul class="nav flex-column flex-lg-row" id="mainNav">
+
+            @foreach (var item in Model.Categories)
+            {
+                <li class="dropdown">
+                    <a class="dropdown-item dropdown-toggle" href="@Url.Action("CategoryDetail","Category", new { id = item.Id })">
+                        @item.Name
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

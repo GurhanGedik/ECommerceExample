@@ -358,8 +358,8 @@ C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\bin\System.Web.We
 C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\bin\System.Web.Helpers.xml
 C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\bin\System.Web.Mvc.xml
 C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\obj\Debug\ECommerce.Web.csprojAssemblyReference.cache
 C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\obj\Debug\ECommerce.Web.csproj.CoreCompileInputs.cache
 C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\obj\Debug\ECommerce.Web.csproj.CopyComplete
 C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\obj\Debug\ECommerce.Web.dll
 C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\obj\Debug\ECommerce.Web.pdb
+C:\Users\gurha\Documents\Github\ECommerceExample\ECommerce.Web\obj\Debug\ECommerce.Web.csprojAssemblyReference.cache

@@ -13,6 +13,11 @@ namespace ECommerce.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult TopMenu()
+        {
             var categorys = db.Categories.Where(x => x.Deleted == false).ToList();
             HomePageModel model = new HomePageModel();
 
@@ -22,9 +27,9 @@ namespace ECommerce.Web.Controllers
                 cat.Id = category.Id;
                 cat.Name = category.Name;
                 model.Categories.Add(cat);
-                
+
             }
-            return View(model);
+            return PartialView("_TopMenu",model);
         }
     }
 }

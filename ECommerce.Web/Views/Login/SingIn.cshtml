@@ -5,82 +5,128 @@
     Layout = "~/Views/Shared/_HomePage.cshtml";
 }
 
-<section class="body-sign">
-    <div class="center-sign">
-        <a href="/" class="logo pull-left">
-
-        </a>
-
-
-        <div class="panel panel-sign">
-            <div class="panel-title-sign mt-xl text-right">
-                <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
-            </div>
-            <div class="panel-body">
-                @using (Html.BeginForm("SingIn", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-group mb-lg">
-                        <label>Username</label>
-                        <div class="input-group input-group-icon">
-                            @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control input-lg" } })
-                            <span class="input-group-addon">
-                                <span class="icon icon-lg">
-                                    <i class="fa fa-user"></i>
-                                </span>
-                            </span>
-                        </div>
+<div role="main" class="main">
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-5 col-xl-4 mb-5 mb-md-0">
+                    <div class="bg-primary rounded p-5">
+                        <span class="top-sub-title text-color-light-2">ALREADY A MEMBER?</span>
+                        <h2 class="text-color-light font-weight-bold text-4 mb-4">Sign In</h2>
+                        @using (Html.BeginForm("SingIn", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-row">
+                                <div class="form-group col mb-2">
+                                    <label class="text-color-light-2" for="shopLoginSignInEmail">EMAIL / USERNAME</label>
+                                    @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control bg-light border-0 rounded text-1" } })
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label class="text-color-light-2" for="shopLoginSignInPassword">PASSWORD</label>
+                                    @Html.EditorFor(x => x.Pasword, new { htmlAttributes = new { @class = "form-control bg-light border-0 rounded text-1" } })
+                                </div>
+                            </div>
+                            <div class="form-row mb-3">
+                                <div class="form-group col">
+                                    <div class="form-check checkbox-custom checkbox-custom-transparent checkbox-default">
+                                        <input class="form-check-input" type="checkbox" id="shopLoginSignInRemember">
+                                        <label class="form-check-label text-color-light-2" for="shopLoginSignInRemember">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group col text-right">
+                                    <a href="#" class="forgot-pw text-color-light-2 d-block">Forgot password?</a>
+                                </div>
+                            </div>
+                            if (ViewBag.Error != null)
+                            {
+                                <p style="color:red;">@ViewBag.Error</p>
+                            }
+                            <div class="row align-items-center">
+                                <div class="col text-right">
+                                    <button type="submit" class="btn btn-dark btn-rounded btn-v-3 btn-h-3 font-weight-bold">SIGN IN</button>
+                                </div>
+                            </div>
+                        }
                     </div>
-
-                    <div class="form-group mb-lg">
-                        <div class="clearfix">
-                            <label class="pull-left">Password</label>
-                            <a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
-                        </div>
-                        <div class="input-group input-group-icon">
-                            @Html.EditorFor(x => x.Pasword, new { htmlAttributes = new { @class = "form-control input-lg" } })
-                            <span class="input-group-addon">
-                                <span class="icon icon-lg">
-                                    <i class="fa fa-lock"></i>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    if (ViewBag.Error != null)
-                    {
-                        <p style="color:red;">@ViewBag.Error</p>
-                    }
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <div class="checkbox-custom checkbox-default">
-                                <input id="RememberMe" name="rememberme" type="checkbox" />
-                                <label for="RememberMe">Remember Me</label>
+                </div>
+                <div class="col-md-6 col-lg-7 col-xl-8 pt-3">
+                    <span class="top-sub-title">NEW USER</span>
+                    <h2 class="font-weight-bold text-4 mb-1">Don't have an account? Register Now!</h2>
+                    <p class="lead mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius.</p>
+                    <form id="shopLoginRegister" action="#" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label class="text-color-dark" for="shopLoginRegisterName">NAME:</label>
+                                <input type="text" value="" class="form-control bg-light-5 border-0 rounded" name="name" id="shopLoginRegisterName" required>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="text-color-dark" for="shopLoginRegisterEmail">EMAIL ADDRESS:</label>
+                                <input type="email" value="" class="form-control bg-light-5 border-0 rounded" name="email" id="shopLoginRegisterEmail" required>
                             </div>
                         </div>
-
-                        <div class="col-sm-4 text-right">
-                            <button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
-                            <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6">
+                                <label class="text-color-dark" for="shopLoginRegisterUsername">USERNAME:</label>
+                                <input type="text" value="" class="form-control bg-light-5 border-0 rounded" name="username" id="shopLoginRegisterUsername" required>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="text-color-dark" for="shopLoginRegisterPhone">PHONE:</label>
+                                <input type="email" value="" class="form-control bg-light-5 border-0 rounded" name="phone" id="shopLoginRegisterPhone" required>
+                            </div>
                         </div>
-                    </div>
-
-
-
-                    <span class="mt-lg mb-lg line-thru text-center text-uppercase">
-                        <span>or</span>
-                    </span>
-
-                    <div class="mb-xs text-center">
-                        <a class="btn btn-facebook mb-md ml-xs mr-xs">Connect with <i class="fa fa-facebook"></i></a>
-                        <a class="btn btn-twitter mb-md ml-xs mr-xs">Connect with <i class="fa fa-twitter"></i></a>
-                    </div>
-
-
-                }
-
+                        <div class="form-row mb-4">
+                            <div class="form-group col-lg-6">
+                                <label class="text-color-dark" for="shopLoginRegisterPassword">PASSWORD:</label>
+                                <input type="password" value="" class="form-control bg-light-5 border-0 rounded" name="username" id="shopLoginRegisterPassword" required>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label class="text-color-dark" for="shopLoginRegisterPassword2">RE-ENTER PASSWORD:</label>
+                                <input type="password" value="" class="form-control bg-light-5 border-0 rounded" name="password" id="shopLoginRegisterPassword2" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col text-right">
+                                <button type="submit" class="btn btn-primary btn-rounded btn-v-3 btn-h-3 font-weight-bold">REGISTER NOW</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+    </section>
 
-        <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2018. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-    </div>
-</section>
+    <section class="section bg-dark-4 py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <h2 class="text-color-light text-4">NEWSLETTER</h2>
+                </div>
+                <div class="col-md-4">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidun.</p>
+                </div>
+                <div class="col-md-6">
+
+                    <form class="newsletter-form" action="php/newsletter-subscribe.php" method="POST">
+                        <div class="newsletter-form-success alert alert-success d-none">
+                            <strong>Success!</strong> You've been added to our email list.
+                        </div>
+                        <div class="newsletter-form-error alert alert-danger d-none">
+                            <strong>Error!</strong> There was an error to add your email.
+                        </div>
+
+                        <div class="input-group bg-light rounded">
+                            <input type="email" class="newsletter-email form-control border-0 rounded" placeholder="Enter Email address" aria-label="Enter Email address" required>
+                            <span class="input-group-btn p-1">
+                                <button class="btn btn-primary font-weight-semibold btn-h-2 rounded h-100" type="submit">SUBSCRIBE</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

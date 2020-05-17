@@ -6,36 +6,211 @@
 }
 
 
-                        <section class="panel">
-                            <header class="panel-heading">
-                                <div class="panel-actions">
-                                </div>
+<div role="main" class="main">
+    <div class="container">
+        <div class="row">
+            <aside class="sidebar col-md-4 col-lg-3 order-2 order-md-1">
+                <div class="accordion accordion-default accordion-toggle accordion-style-1" role="tablist">
 
-                                <h2 class="panel-title">Products</h2>
-                            </header>
-                            <div class="panel-body">
-                                <table class="table table-bordered table-striped mb-none" id="datatable-default">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Sku</th>
-                                            <th>Barcode</th>
-                                            <th>Price</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Products)
-                                        {
-                                            <tr class="gradeX">
-                                                <td><a href="@Url.Action("ProductDetail","Product", new { id = item.Id })">@item.Name</a></td>
-                                                <td>@item.Sku</td>
-                                                <td>@item.Barcode</td>
-                                                <td>@item.Price</td>
-                                                <td>@item.Description</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                    <div class="card">
+                        <div class="card-header accordion-header" role="tab" id="categories">
+                            <h5 class="mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#toggleCategories" aria-expanded="false" aria-controls="toggleCategories">FASHION</a>
+                            </h5>
+                        </div>
+                        <div id="toggleCategories" class="accordion-body collapse show" role="tabpanel" aria-labelledby="categories">
+                            <div class="card-body">
+                                <ul class="list list-unstyled mb-0">
+                                    <li><a href="#">Dresses</a></li>
+                                    <li><a href="#">Hats</a></li>
+                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="#">Shoes</a></li>
+                                </ul>
                             </div>
-                        </section>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header accordion-header" role="tab" id="price">
+                            <h5 class="mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#togglePrice" aria-expanded="false" aria-controls="togglePrice">PRICE</a>
+                            </h5>
+                        </div>
+                        <div id="togglePrice" class="accordion-body collapse show" role="tabpanel" aria-labelledby="price">
+                            <div class="card-body">
+                                <div class="slider-range-wrapper">
+                                    <div class="slider-range mb-3" data-plugin-slider-range></div>
+                                    <form class="d-flex align-items-center justify-content-between" method="get">
+                                        <span>
+                                            Price $<span class="price-range-low">0</span> - $<span class="price-range-high">0</span>
+                                        </span>
+                                        <input type="hidden" class="hidden-price-range-low" name="priceLow" value="" />
+                                        <input type="hidden" class="hidden-price-range-high" name="priceHigh" value="" />
+                                        <button type="submit" class="btn btn-primary btn-h-1 font-weight-bold rounded-0">FILTER</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header accordion-header" role="tab" id="sizes">
+                            <h5 class="mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#toggleSizes" aria-expanded="false" aria-controls="toggleSizes">SIZES</a>
+                            </h5>
+                        </div>
+                        <div id="toggleSizes" class="accordion-body collapse show" role="tabpanel" aria-labelledby="sizes">
+                            <div class="card-body">
+                                <ul class="list list-inline list-filter">
+                                    <li class="list-inline-item">
+                                        <a href="#">S</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#" class="active">M</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">L</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">XL</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">2XL</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">3XL</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header accordion-header" role="tab" id="brands">
+                            <h5 class="mb-0">
+                                <a href="#" data-toggle="collapse" data-target="#toggleBrands" aria-expanded="false" aria-controls="toggleBrands">BRANDS</a>
+                            </h5>
+                        </div>
+                        <div id="toggleBrands" class="accordion-body collapse show" role="tabpanel" aria-labelledby="brands">
+                            <div class="card-body">
+                                <ul class="list list-unstyled mb-0">
+                                    <li><a href="#">Adidas <span class="float-right">18</span></a></li>
+                                    <li><a href="#">Camel <span class="float-right">22</span></a></li>
+                                    <li><a href="#">Samsung Galaxy <span class="float-right">05</span></a></li>
+                                    <li><a href="#">Seiko <span class="float-right">68</span></a></li>
+                                    <li><a href="#">Sony <span class="float-right">03</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <div class="col-md-8 col-lg-9 order-1 order-md-2 mb-5 mb-md-0">
+                <div class="row align-items-center justify-content-between mb-4">
+                    <div class="col-auto mb-3 mb-sm-0">
+                        <form method="get">
+                            <div class="custom-select-1">
+                                <select class="form-control border">
+                                    <option value="popularity">Sort by popularity</option>
+                                    <option value="rating">Sort by average rating</option>
+                                    <option value="date" selected="selected">Sort by newness</option>
+                                    <option value="price">Sort by price: low to high</option>
+                                    <option value="price-desc">Sort by price: high to low</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-auto">
+                        <div class="d-flex align-items-center">
+                            <span>Showing 1-9 of 60 results</span>
+                            <a href="#" class="text-color-dark text-3 ml-2" data-toggle="tooltip" data-placement="top" title="Grid"><i class="fas fa-th"></i></a>
+                            <a href="#" class="text-color-dark text-3 ml-2" data-toggle="tooltip" data-placement="top" title="List"><i class="fas fa-list-ul"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model.Products)
+                    {
+                        <div class="col-sm-6 col-md-4 mb-4">
+                            <div class="product portfolio-item portfolio-item-style-2">
+                                <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                    <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                        <a href="@Url.Action("ProductDetail","Product", new { id = item.Id })">
+                                            <img src="~/Theme/images/product-default.jpg" class="img-fluid" alt="">
+                                        </a>
+                                        <span class="image-frame-action">
+                                            <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="product-info d-flex flex-column flex-lg-row justify-content-between">
+                                    <div class="product-info-title">
+                                        <h3 class="text-color-default text-2 line-height-1 mb-1"><a href="@Url.Action("ProductDetail","Product", new { id = item.Id })">@item.Name</a></h3>
+                                        <span class="price font-primary text-4"><strong class="text-color-dark">@item.Price₺</strong></span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <hr class="mt-5 mb-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-auto mb-3 mb-sm-0">
+                        <span>Showing 1-9 of 60 results</span>
+                    </div>
+                    <div class="col-auto">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mb-0">
+                                <li class="page-item">
+                                    <a class="page-link prev" href="#" aria-label="Previous">
+                                        <span><i class="fas fa-angle-left" aria-label="Previous"></i></span>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">...</li>
+                                <li class="page-item"><a class="page-link" href="#">15</a></li>
+                                <li class="page-item">
+                                    <a class="page-link next" href="#" aria-label="Next">
+                                        <span><i class="fas fa-angle-right" aria-label="Next"></i></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section bg-dark-4 py-5 mt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <h2 class="text-color-light text-4">NEWSLETTER</h2>
+                </div>
+                <div class="col-md-4">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidun.</p>
+                </div>
+                <div class="col-md-6">
+
+                    <form class="newsletter-form" action="php/newsletter-subscribe.php" method="POST">
+                        <div class="newsletter-form-success alert alert-success d-none">
+                            <strong>Success!</strong> You've been added to our email list.
+                        </div>
+                        <div class="newsletter-form-error alert alert-danger d-none">
+                            <strong>Error!</strong> There was an error to add your email.
+                        </div>
+
+                        <div class="input-group bg-light rounded">
+                            <input type="email" class="newsletter-email form-control border-0 rounded" placeholder="Enter Email address" aria-label="Enter Email address" required>
+                            <span class="input-group-btn p-1">
+                                <button class="btn btn-primary font-weight-semibold btn-h-2 rounded h-100" type="submit">SUBSCRIBE</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

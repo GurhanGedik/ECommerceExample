@@ -1,14 +1,608 @@
-﻿@using ECommerce.Web.Models
-@model HomePageModel
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_HomePage.cshtml";
 }
-<h2>Categorys</h2>
-@foreach (var item in Model.Categories)
-{
-    <a href="../Category/CategoryDetail/@item.Id">@item.Name</a>
-    <br />
-}
 
 
+<div role="main" class="main">
+    <section class="section py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-lg-3 p-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
+                    <div class="image-frame">
+                        <div class="image-frame-wrapper align-items-end">
+                            <img src="~/Theme/images/product-bg-7.jpg" class="img-fluid" alt="">
+                            <div class="image-frame-info image-frame-info-show flex-column px-4 mx-2">
+                                <h2 class="text-color-light text-center text-5 line-height-2 mb-4"><strong>MENS STYLE</strong> UP TO <strong>25% OFF</strong></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 col-lg-6 p-1 z-index-1">
+                    <div class="image-frame">
+                        <div class="image-frame-wrapper">
+                            <img src="~/Theme/images/product-bg-8.jpg" class="img-fluid appear-animation" alt="" data-appear-animation="scaleOut" data-appear-animation-duration="8s">
+                            <div class="image-frame-info image-frame-info-show flex-column align-items-start px-4 pt-md-4 mt-md-3 mx-2">
+                                <h2 class="text-color-light font-weight-bold text-8 line-height-2 mb-2">SUMMER <br>COLLECTION</h2>
+                                <span class="text-color-light font-primary text-3 mb-4">UP TO <strong>40% OFF</strong></span>
+                                <a href="shop-3-columns-left-sidebar.html" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3 appear-animation" data-appear-animation="scaleOut" data-appear-animation-duration="8s">SHOP NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="row justify-content-center">
+                        <div class="col-6 col-md-5 col-lg-12 p-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
+                            <div class="image-frame">
+                                <div class="image-frame-wrapper align-items-start">
+                                    <img src="~/Theme/images/product-bg-9.jpg" class="img-fluid" alt="">
+                                    <div class="image-frame-info image-frame-info-show flex-column align-items-center pt-4">
+                                        <h2 class="text-color-light text-center text-4 mb-4">MENS<br> <strong>SNEAKERS</strong></h2>
+                                    </div>
+                                    <span class="text-color-light bg-primary font-primary font-weight-bold rounded-circle off-tag-bottom-left line-height-1 text-4 p-4">45%<br>OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-5 col-lg-12 p-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200">
+                            <div class="image-frame">
+                                <div class="image-frame-wrapper">
+                                    <img src="~/Theme/images/product-bg-10.jpg" class="img-fluid" alt="">
+                                    <div class="image-frame-info image-frame-info-show flex-column align-items-center">
+                                        <span class="text-color-light font-primary font-weight-bold text-3">END OF</span>
+                                        <h2 class="text-color-light font-weight-bold text-5 line-height-1 mb-2">SEASON SALE</h2>
+                                        <span class="text-color-light font-primary text-3 mb-4">FLAT <strong>75% OFF</strong></span>
+                                        <a href="shop-3-columns-left-sidebar.html" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">SHOP NOW</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section pt-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col">
+                    <div class="overflow-hidden">
+                        <span class="d-block top-sub-title text-color-primary appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">RECOMENDED</span>
+                    </div>
+                    <div class="overflow-hidden mb-2">
+                        <h2 class="font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="400">Featured Products</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                <div class="col p-1">
+                    <div class="owl-carousel owl-theme nav-style-3" data-plugin-options="{'loop': true, 'autoplay': true, 'items': 4, 'nav': false, 'dots': false, 'margin': 8, 'autoplayHoverPause': true}">
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-1.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Long Hoddie</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$59</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$69</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-2.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Leather Belt</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$19</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$29</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-3.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Jack Sandals</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$30</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$40</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-4.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Vintage Hat</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$79</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$99</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-5.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Timez Watch</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$119</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$199</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-6.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Clauren Bag</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$289</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$299</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-7.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Classik Sunglasses</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$99</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$199</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-8.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">High Heels Shoes</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$79</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$99</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-9.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Dual Color Jacket</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$299</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$399</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-10.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Fashion Shoes</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$50</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$69</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-11.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Klerk Hand Bag</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$189</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$199</strong></span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                                <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                    <a href="shop-product-detail-right-sidebar.html">
+                                        <img src="~/Theme/images/product-12.jpg" class="img-fluid" alt="">
+                                    </a>
+                                    <span class="image-frame-action">
+                                        <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                    </span>
+                                </span>
+                            </div>
+                            <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Unisex Hat</a></h3>
+                            <span class="price font-primary text-4"><strong class="text-color-dark">$39</strong></span>
+                            <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$59</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section bg-primary appear-animation" data-appear-animation="fadeIn">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col">
+                    <div class="overflow-hidden">
+                        <span class="d-block top-sub-title text-color-light appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">RECOMENDED</span>
+                    </div>
+                    <div class="overflow-hidden mb-2">
+                        <h2 class="text-color-light font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="400">Browser Our Categories</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                <div class="col">
+                    <div class="owl-carousel owl-theme carousel-items-border-divider nav-style-3 nav-color-light" data-plugin-options="{'loop': true, 'autoplay': false, 'items': 4, 'nav': true, 'dots': false, 'autoplayHoverPause': true, 'autoHeight': true}">
+                        <div class="px-3">
+                            <a href="shop-3-columns-left-sidebar.html">
+                                <div class="icon-box-animation-1 icon-box-animation-1-light">
+                                    <div class="icon-box icon-box-style-5 p-4">
+                                        <div class="icon-box-icon mb-3">
+                                            <img width="70" src="~/Theme/images/home.svg" alt="" data-icon data-plugin-options="{'color': '#FFF'}" />
+                                        </div>
+                                        <div class="icon-box-info">
+                                            <div class="icon-box-info-title">
+                                                <h4 class="text-color-light mb-0">HOME & GARDEN</h4>
+                                            </div>
+                                            <p class="text-color-light font-primary">55 PRODUCTS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="px-3">
+                            <a href="shop-3-columns-left-sidebar.html">
+                                <div class="icon-box-animation-1 icon-box-animation-1-light">
+                                    <div class="icon-box icon-box-style-5 p-4">
+                                        <div class="icon-box-icon mb-3">
+                                            <img width="70" src="~/Theme/images/sports.svg" alt="" data-icon data-plugin-options="{'color': '#FFF'}" />
+                                        </div>
+                                        <div class="icon-box-info">
+                                            <div class="icon-box-info-title">
+                                                <h4 class="text-color-light mb-0">SPORTS</h4>
+                                            </div>
+                                            <p class="text-color-light font-primary">155 PRODUCTS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="px-3">
+                            <a href="shop-3-columns-left-sidebar.html">
+                                <div class="icon-box-animation-1 icon-box-animation-1-light">
+                                    <div class="icon-box icon-box-style-5 p-4">
+                                        <div class="icon-box-icon mb-3">
+                                            <img width="70" src="~/Theme/images/technology.svg" alt="" data-icon data-plugin-options="{'color': '#FFF'}" />
+                                        </div>
+                                        <div class="icon-box-info">
+                                            <div class="icon-box-info-title">
+                                                <h4 class="text-color-light mb-0">ELECTRONICS</h4>
+                                            </div>
+                                            <p class="text-color-light font-primary">15 PRODUCTS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="px-3">
+                            <a href="shop-3-columns-left-sidebar.html">
+                                <div class="icon-box-animation-1 icon-box-animation-1-light">
+                                    <div class="icon-box icon-box-style-5 p-4">
+                                        <div class="icon-box-icon mb-3">
+                                            <img width="70" src="~/Theme/images/fashion.svg" alt="" data-icon data-plugin-options="{'color': '#FFF'}" />
+                                        </div>
+                                        <div class="icon-box-info">
+                                            <div class="icon-box-info-title">
+                                                <h4 class="text-color-light mb-0">FASHION</h4>
+                                            </div>
+                                            <p class="text-color-light font-primary">25 PRODUCTS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="px-3">
+                            <a href="shop-3-columns-left-sidebar.html">
+                                <div class="icon-box-animation-1 icon-box-animation-1-light">
+                                    <div class="icon-box icon-box-style-5 p-4">
+                                        <div class="icon-box-icon mb-3">
+                                            <img width="70" src="~/Theme/images/jewelry.svg" alt="" data-icon data-plugin-options="{'color': '#FFF'}" />
+                                        </div>
+                                        <div class="icon-box-info">
+                                            <div class="icon-box-info-title">
+                                                <h4 class="text-color-light mb-0">JEWELRY</h4>
+                                            </div>
+                                            <p class="text-color-light font-primary">51 PRODUCTS</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col">
+                    <div class="overflow-hidden">
+                        <span class="d-block top-sub-title text-color-primary appear-animation" data-appear-animation="maskUp">WHAT'S NEW?</span>
+                    </div>
+                    <div class="overflow-hidden mb-2">
+                        <h2 class="font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">New Arrivals</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                            <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                <a href="shop-product-detail-right-sidebar.html">
+                                    <img src="~/Theme/images/product-4.jpg" class="img-fluid" alt="">
+                                </a>
+                                <span class="image-frame-action">
+                                    <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                </span>
+                            </span>
+                        </div>
+                        <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Brown Jacket</a></h3>
+                        <span class="price font-primary text-4"><strong class="text-color-dark">$79</strong></span>
+                        <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$99</strong></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                            <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                <a href="shop-product-detail-right-sidebar.html">
+                                    <img src="~/Theme/images/product-5.jpg" class="img-fluid" alt="">
+                                </a>
+                                <span class="image-frame-action">
+                                    <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                </span>
+                            </span>
+                        </div>
+                        <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Brown Jacket</a></h3>
+                        <span class="price font-primary text-4"><strong class="text-color-dark">$119</strong></span>
+                        <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$199</strong></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                            <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                <a href="shop-product-detail-right-sidebar.html">
+                                    <img src="~/Theme/images/product-6.jpg" class="img-fluid" alt="">
+                                </a>
+                                <span class="image-frame-action">
+                                    <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                </span>
+                            </span>
+                        </div>
+                        <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Brown Jacket</a></h3>
+                        <span class="price font-primary text-4"><strong class="text-color-dark">$289</strong></span>
+                        <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$299</strong></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                            <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                <a href="shop-product-detail-right-sidebar.html">
+                                    <img src="~/Theme/images/product-7.jpg" class="img-fluid" alt="">
+                                </a>
+                                <span class="image-frame-action">
+                                    <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                </span>
+                            </span>
+                        </div>
+                        <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Brown Jacket</a></h3>
+                        <span class="price font-primary text-4"><strong class="text-color-dark">$99</strong></span>
+                        <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$199</strong></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                            <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                <a href="shop-product-detail-right-sidebar.html">
+                                    <img src="~/Theme/images/product-8.jpg" class="img-fluid" alt="">
+                                </a>
+                                <span class="image-frame-action">
+                                    <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                </span>
+                            </span>
+                        </div>
+                        <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Brown Jacket</a></h3>
+                        <span class="price font-primary text-4"><strong class="text-color-dark">$79</strong></span>
+                        <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$99</strong></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                            <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                <a href="shop-product-detail-right-sidebar.html">
+                                    <img src="~/Theme/images/product-9.jpg" class="img-fluid" alt="">
+                                </a>
+                                <span class="image-frame-action">
+                                    <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                </span>
+                            </span>
+                        </div>
+                        <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Brown Jacket</a></h3>
+                        <span class="price font-primary text-4"><strong class="text-color-dark">$299</strong></span>
+                        <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$399</strong></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                            <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                <a href="shop-product-detail-right-sidebar.html">
+                                    <img src="~/Theme/images/product-10.jpg" class="img-fluid" alt="">
+                                </a>
+                                <span class="image-frame-action">
+                                    <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                </span>
+                            </span>
+                        </div>
+                        <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Brown Jacket</a></h3>
+                        <span class="price font-primary text-4"><strong class="text-color-dark">$50</strong></span>
+                        <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$69</strong></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="text-center mb-4">
+                        <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
+                            <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+                                <a href="shop-product-detail-right-sidebar.html">
+                                    <img src="~/Theme/images/product-11.jpg" class="img-fluid" alt="">
+                                </a>
+                                <span class="image-frame-action">
+                                    <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                </span>
+                            </span>
+                        </div>
+                        <h3 class="text-color-default text-2 mb-0"><a href="shop-product-detail-right-sidebar.html">Brown Jacket</a></h3>
+                        <span class="price font-primary text-4"><strong class="text-color-dark">$189</strong></span>
+                        <span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">$199</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section bg-light-5 pb-5">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col">
+                    <div class="overflow-hidden">
+                        <span class="d-block top-sub-title text-color-primary appear-animation" data-appear-animation="maskUp">EZSHOP</span>
+                    </div>
+                    <div class="overflow-hidden mb-2">
+                        <h2 class="font-weight-bold mb-0 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="200">Blog and Testimonials</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <article class="blog-post">
+                        <header class="mb-2">
+                            <div class="image-frame hover-effect-2">
+                                <a href="blog-single-post.html" class="d-block">
+                                    <img src="~/Theme/images/blog-4.jpg" class="img-fluid mb-3" alt="" />
+                                </a>
+                            </div>
+                            <a href="blog-single-post.html" class="link-color-dark"><h3 class="font-weight-bold text-4 mb-1">Coming Up Next on Woman</h3></a>
+                            <i class="far fa-clock mt-1 text-color-primary"></i>
+                            <time class="font-tertiary text-1" datetime="2018-01-17">Jan 17, 2018</time>
+                        </header>
+                        <p>Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    </article>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <article class="blog-post">
+                        <header class="mb-2">
+                            <div class="image-frame hover-effect-2">
+                                <a href="blog-single-post.html" class="d-block">
+                                    <img src="~/Theme/images/blog-5.jpg" class="img-fluid mb-3" alt="" />
+                                </a>
+                            </div>
+                            <a href="blog-single-post.html" class="link-color-dark"><h3 class="font-weight-bold text-4 mb-1">Classic Style for Him</h3></a>
+                            <i class="far fa-clock mt-1 text-color-primary"></i>
+                            <time class="font-tertiary text-1" datetime="2018-01-17">Jan 17, 2018</time>
+                        </header>
+                        <p>Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-4">
+                        <div class="testimonial testimonial-style-3">
+                            <div class="card bg-light rounded text-light border-0">
+                                <div class="card-body px-4 py-4 py-xl-5">
+                                    <p class="m-0 p-2 text-color-dark text-2 text-left">Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-arrow bg-light mb-4"></div>
+                            <div class="testimonial-author-image">
+                                <img src="~/Theme/images/author-3.jpg" class="img-fluid rounded-circle" alt="">
+                            </div>
+                            <div class="testimonial-author mt-2">
+                                <span>
+                                    <strong class="text-3">Monica Doe</strong>
+                                    <span>EZY Theme</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

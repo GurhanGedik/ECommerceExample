@@ -3,116 +3,294 @@
 <html>
 <head>
     <!-- Basic -->
-    <meta charset="UTF-8">
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@ViewBag.Title</title>
-    <meta name="keywords" content=" " />
-    <meta name="description" content=" ">
-    <meta name="author" content="">
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="EZY - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
 
     <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
     <!-- Web Fonts  -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600,700,900%7COpen+Sans:300,400,600,700,800" rel="stylesheet" type="text/css">
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/magnific-popup/magnific-popup.css" />
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/bootstrap-datepicker/css/datepicker3.css" />
-
-    <!-- Specific Page Vendor CSS -->
-    <link rel="stylesheet" href="~/Areas/Admin//Theme/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css" />
-
-    <!-- Specific Page Vendor CSS -->
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/morris/morris.css" />
-
-    <!-- Specific Page Vendor CSS -->
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/select2/select2.css" />
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/vendor/jquery-datatables-bs3/assets/css/datatables.css" />
-
+    <link rel="stylesheet" href="~/Theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Theme/vendor/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Theme/vendor/animate/animate.min.css">
+    <link rel="stylesheet" href="~/Theme/vendor/linear-icons/css/linear-icons.min.css">
+    <link rel="stylesheet" href="~/Theme/vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Theme/vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Theme/vendor/magnific-popup/magnific-popup.min.css">
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/stylesheets/theme.css" />
+    <link rel="stylesheet" href="~/Theme/css/theme.css">
+    <link rel="stylesheet" href="~/Theme/css/theme-elements.css">
 
     <!-- Skin CSS -->
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/stylesheets/skins/default.css" />
+    <link rel="stylesheet" href="~/Theme/css/skins/default.css">
 
     <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="~/Areas/Admin/Theme/stylesheets/theme-custom.css">
+    <link rel="stylesheet" href="~/Theme/css/custom.css">
 
     <!-- Head Libs -->
-    <script src="~/Areas/Admin/Theme/vendor/modernizr/modernizr.js"></script>
+    <script src="~/Theme/vendor/modernizr/modernizr.min.js"></script>
 </head>
 <body>
-    <div>
+    <div class="body">
+
+        <header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 120, 'stickyChangeLogo': false}">
+            <div class="header-body">
+                <div class="header-top header-top-dark">
+                    <div class="header-top-container container">
+                        <div class="header-row">
+                            <div class="header-column justify-content-start">
+                                <span class="d-none d-md-flex align-items-center">
+                                    <a href="tel:+123456789">PHONE: (123) 456-789</a>
+                                </span>
+                                <span class="d-none d-md-flex align-items-center ml-4">
+                                    <a href="mailto:you@domain.com">EMAIL: MAIL@EXAMPLE.COM</a>
+                                </span>
+                            </div>
+                            <div class="header-column justify-content-end">
+                                <ul class="nav">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">MY ACCOUNT</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">DAILY DEAL</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">MY WISHLIST</a>
+                                    </li>
+                                    <li class="nav-item d-none d-sm-block">
+                                        <a href="blog-masonry-left-sidebar.html" class="nav-link">BLOG</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-container container">
+                    <div class="header-row">
+                        <div class="header-column justify-content-start">
+                            <div class="header-logo">
+                                <a href="@Url.Action("Index","Home")">
+                                    <img alt="EZ" width="128" height="32" src="~/Theme/images/logo-shop.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-column justify-content-end">
+                            <div class="header-search-expanded">
+                                <form method="GET">
+                                    <div class="input-group bg-light border">
+                                        <input type="text" class="form-control text-4" name="s" placeholder="I'm looking for..." aria-label="I'm looking for...">
+                                        <span class="input-group-btn">
+                                            <button class="btn" type="submit"><i class="lnr lnr-magnifier text-color-dark"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="header-nav justify-content-start">
+                                <a href="#" class="header-search-button order-1 text-5 d-none d-sm-block mt-1 mr-xl-2">
+                                    <i class="lnr lnr-magnifier"></i>
+                                </a>
+
+                                @Html.Action("TopMenu", "Home")
+
+                                <a href="@Url.Action("SingIn","Login")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Login</a>
+                                <div class="mini-cart order-4">
+                                    <span class="font-weight-bold font-primary">Cart / <span class="cart-total">$0.00</span></span>
+                                    <div class="mini-cart-icon">
+                                        <img src="img/icons/cart-bag.svg" class="img-fluid" alt="" />
+                                        <span class="badge badge-primary rounded-circle">0</span>
+                                    </div>
+                                    <div class="mini-cart-content">
+                                        <div class="inner-wrapper bg-light rounded">
+                                            <div class="mini-cart-product">
+                                                <div class="row">
+                                                    <div class="col-7">
+                                                        <h2 class="text-color-default font-secondary text-1 mt-3 mb-0">Blue Hoodies</h2>
+                                                        <strong class="text-color-dark">
+                                                            <span class="qty">1x</span>
+                                                            <span class="product-price">$12.00</span>
+                                                        </strong>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="product-image">
+                                                            <a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
+                                                            <img src="img/products/product-2.jpg" class="img-fluid rounded" alt="" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mini-cart-total">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <strong class="text-color-dark">TOTAL:</strong>
+                                                    </div>
+                                                    <div class="col text-right">
+                                                        <strong class="total-value text-color-dark">$12.00</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mini-cart-actions">
+                                                <div class="row">
+                                                    <div class="col pr-1">
+                                                        <a href="shop-cart.html" class="btn btn-dark font-weight-bold rounded text-0">VIEW CART</a>
+                                                    </div>
+                                                    <div class="col pl-1">
+                                                        <a href="shop-checkout.html" class="btn btn-primary font-weight-bold rounded text-0">CHECKOUT</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="header-btn-collapse-nav order-4 ml-3" data-toggle="collapse" data-target=".header-nav-main nav">
+                                    <span class="hamburguer">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                    <span class="close">
+                                        <span></span>
+                                        <span></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
         @RenderBody()
+
+        <footer id="footer" class="footer-hover-links-light mt-0">
+            <div class="container">
+                <div class="featured-boxes">
+                    <div class="row">
+                        <div class="featured-box col-lg-4">
+                            <a class="text-decoration-none" href="#">
+                                <i class="lnr lnr-cart text-color-light"></i>
+                                <h2 class="text-1 mb-0 pt-1">FREE SHIPPING ABOVE $99</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur</p>
+                            </a>
+                        </div>
+                        <div class="featured-box col-lg-4">
+                            <a class="text-decoration-none" href="#">
+                                <i class="lnr lnr-gift text-color-light"></i>
+                                <h2 class="text-1 mb-0 pt-1">SEND A GIFT TO A FRIEND</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur</p>
+                            </a>
+                        </div>
+                        <div class="featured-box col-lg-4">
+                            <a class="text-decoration-none" href="#">
+                                <i class="lnr lnr-heart text-color-light"></i>
+                                <h2 class="text-1 mb-0 pt-1">LOVED BY OUR CUSTOMERS</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 mb-4 mb-lg-0">
+                        <h2 class="text-3 mb-3">CATEGORIES</h2>
+                        <ul class="list list-icon list-unstyled">
+                            <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="shop-3-columns-left-sidebar.html">Men's fashion</a></li>
+                            <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="shop-3-columns-left-sidebar.html">Women's fashion</a></li>
+                            <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="shop-3-columns-left-sidebar.html">Kid's fashion</a></li>
+                            <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="shop-3-columns-left-sidebar.html">Accessories</a></li>
+                            <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="shop-3-columns-left-sidebar.html">Shoes</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 mb-5 mb-lg-0">
+                        <h2 class="text-3 mb-3">LATEST NEWS</h2>
+                        <div class="mb-3">
+                            <p class="mb-2"><a href="blog-single-post.html" class="d-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent</a></p>
+                            <a href="blog-single-post.html" class="font-tertiary font-style-italic text-color-light">March 5, 2018</a>
+                        </div>
+                        <div>
+                            <p class="mb-2"><a href="blog-single-post.html" class="d-block">Dolor sit amet, consectetur adipiscing elit.</a></p>
+                            <a href="blog-single-post.html" class="font-tertiary font-style-italic text-color-light">March 5, 2018</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <h2 class="text-3 mb-3">NEWSLETTER</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+
+                        <form class="newsletter-form" action="php/newsletter-subscribe.php" method="POST">
+                            <div class="newsletter-form-success alert alert-success d-none">
+                                <strong>Success!</strong> You've been added to our email list.
+                            </div>
+                            <div class="newsletter-form-error alert alert-danger d-none">
+                                <strong>Error!</strong> There was an error to add your email.
+                            </div>
+
+                            <div class="input-group bg-light rounded">
+                                <input type="email" class="newsletter-email form-control border-0 rounded" placeholder="Enter Email address" aria-label="Enter Email address" required>
+                                <span class="input-group-btn p-1">
+                                    <button class="btn btn-primary font-weight-semibold btn-h-2 rounded h-100" type="submit">SUBSCRIBE</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row text-center text-md-left align-items-center">
+                        <div class="col-md-7 col-lg-8">
+                            <ul class="social-icons social-icons-transparent social-icons-icon-light social-icons-lg">
+                                <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                <li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5 col-lg-4">
+                            <p class="text-md-right pb-0 mb-0">Copyrights © 2018. All Rights Reserved by Okler</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
 
     <!-- Vendor -->
-    <script src="~/Areas/Admin/Theme/vendor/jquery/jquery.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/bootstrap/js/bootstrap.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/nanoscroller/nanoscroller.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/magnific-popup/magnific-popup.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-placeholder/jquery.placeholder.js"></script>
-
-    <!-- Specific Page Vendor -->
-    <script src="~/Areas/Admin/Theme/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-appear/jquery.appear.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-easypiechart/jquery.easypiechart.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/flot/jquery.flot.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/flot-tooltip/jquery.flot.tooltip.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/flot/jquery.flot.pie.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/flot/jquery.flot.categories.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/flot/jquery.flot.resize.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-sparkline/jquery.sparkline.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/raphael/raphael.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/morris/morris.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/gauge/gauge.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/snap-svg/snap.svg.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/liquid-meter/liquid.meter.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/jquery.vmap.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/data/jquery.vmap.sampledata.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/maps/jquery.vmap.world.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/maps/continents/jquery.vmap.africa.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/maps/continents/jquery.vmap.asia.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/maps/continents/jquery.vmap.australia.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/maps/continents/jquery.vmap.europe.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js"></script>
-    <!-- Specific Page Vendor -->
-    <script src="~/Areas/Admin/Theme/vendor/select2/select2.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-datatables/extras/TableTools/js/dataTables.tableTools.min.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+    <script src="~/Theme/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Theme/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="~/Theme/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/Theme/vendor/jquery-cookie/jquery-cookie.min.js"></script>
+    <script src="~/Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Theme/vendor/common/common.min.js"></script>
+    <script src="~/Theme/vendor/jquery.validation/jquery.validation.min.js"></script>
+    <script src="~/Theme/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+    <script src="~/Theme/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="~/Theme/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="~/Theme/vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="~/Theme/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/Theme/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Theme/vendor/vide/vide.min.js"></script>
+    <script src="~/Theme/vendor/vivus/vivus.min.js"></script>
 
     <!-- Theme Base, Components and Settings -->
-    <script src="~/Areas/Admin/Theme/javascripts/theme.js"></script>
+    <script src="~/Theme/js/theme.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/Theme/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/Theme/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
 
     <!-- Theme Custom -->
-    <script src="~/Areas/Admin/Theme/javascripts/theme.custom.js"></script>
+    <script src="~/Theme/js/custom.js"></script>
 
     <!-- Theme Initialization Files -->
-    <script src="~/Areas/Admin/Theme/javascripts/theme.init.js"></script>
-
-    <!-- Specific Page Vendor -->
-    <script src="~/Areas/Admin/Theme/vendor/jquery-autosize/jquery.autosize.js"></script>
-    <script src="~/Areas/Admin/Theme/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
-
-    <!-- Examples -->
-    <script src="~/Areas/Admin/Theme/javascripts/dashboard/examples.dashboard.js"></script>
-
-    <!-- Examples -->
-    <script src="~/Areas/Admin/Theme/javascripts/tables/examples.datatables.default.js"></script>
-    <script src="~/Areas/Admin/Theme/javascripts/tables/examples.datatables.row.with.details.js"></script>
-    <script src="~/Areas/Admin/Theme/javascripts/tables/examples.datatables.tabletools.js"></script>
+    <script src="~/Theme/js/theme.init.js"></script>
+    <script src="~/Theme/js/examples/examples.gallery.js"></script>
 </body>
 </html>
