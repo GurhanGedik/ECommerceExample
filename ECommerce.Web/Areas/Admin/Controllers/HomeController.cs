@@ -13,7 +13,7 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         {
             if (Session["FirstName"] == null && Session["LastName"] == null)
             {
-                return RedirectToAction("Index","Login");
+                return RedirectToAction("SingIn", "../Login");
             }
             return View();
         }

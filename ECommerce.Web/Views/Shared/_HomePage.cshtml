@@ -102,7 +102,14 @@
 
                                 @Html.Action("TopMenu", "Home")
 
-                                <a href="@Url.Action("SingIn","Login")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Login</a>
+                                @if (Session["FirstName"] != null)
+                                {
+                                    <a href="@Url.Action("Index","Admin/Home")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Panel</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("SingIn","Login")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Login</a>
+                                }
                                 <div class="mini-cart order-4">
                                     <span class="font-weight-bold font-primary">Cart / <span class="cart-total">$0.00</span></span>
                                     <div class="mini-cart-icon">

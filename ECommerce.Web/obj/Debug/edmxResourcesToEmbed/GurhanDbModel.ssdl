@@ -49,6 +49,7 @@
     <Property Name="ManufacturerId" Type="int" />
     <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar(max)" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
     <Property Name="UpdateOnUtc" Type="datetime" />
   </EntityType>

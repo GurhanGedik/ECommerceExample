@@ -15,6 +15,7 @@ namespace ECommerce.Web.Models
         public decimal? Price { get; set; }
         public string CategoryName { get; set; }
         public string ManufactureName { get; set; }
+        public string Photo { get; set; }
         public int? CategoryId { get; set; }
         public int? ManufactureId { get; set; }
         public bool Active { get; set; }

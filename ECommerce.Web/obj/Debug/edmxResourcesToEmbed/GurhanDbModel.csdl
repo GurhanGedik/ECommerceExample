@@ -69,6 +69,7 @@
     <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Category" Relationship="GurhanModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
     <NavigationProperty Name="Manufacturer" Relationship="GurhanModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Product_Category">
     <End Type="GurhanModel.Category" Role="Category" Multiplicity="0..1" />

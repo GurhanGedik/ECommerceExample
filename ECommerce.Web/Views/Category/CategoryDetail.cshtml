@@ -133,7 +133,14 @@
                                 <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
                                     <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
                                         <a href="@Url.Action("ProductDetail","Product", new { id = item.Id })">
-                                            <img src="~/Theme/images/product-default.jpg" class="img-fluid" alt="">
+                                            @if (item.Photo == null)
+                                            {
+                                                <img src="../../Theme/images/product-default.jpg" class="img-fluid" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img src="../../Theme/images/upload/@item.Photo" class="img-fluid" alt="">
+                                            }
                                         </a>
                                         <span class="image-frame-action">
                                             <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
@@ -145,7 +152,7 @@
                                         <h3 class="text-color-default text-2 line-height-1 mb-1"><a href="@Url.Action("ProductDetail","Product", new { id = item.Id })">@item.Name</a></h3>
                                         <span class="price font-primary text-4"><strong class="text-color-dark">@item.Price₺</strong></span>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>

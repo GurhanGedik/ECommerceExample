@@ -29,6 +29,7 @@ namespace ECommerce.Web.Controllers
                 productModel.Barcode = product.Barcode;
                 productModel.CategoryName = product.Category.Name;
                 productModel.ManufactureName = product.Manufacturer.Name;
+                productModel.Photo = product.Photo;
 
                 model.Products.Add(productModel);
 

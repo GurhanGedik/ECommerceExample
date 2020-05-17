@@ -26,6 +26,7 @@ namespace ECommerce.Web
         public bool Deleted { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
         public Nullable<System.DateTime> UpdateOnUtc { get; set; }
+        public string Photo { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }

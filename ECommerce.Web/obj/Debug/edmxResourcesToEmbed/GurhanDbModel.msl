@@ -42,6 +42,7 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="GurhanModel.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="UpdateOnUtc" ColumnName="UpdateOnUtc" />
           <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
           <ScalarProperty Name="Deleted" ColumnName="Deleted" />

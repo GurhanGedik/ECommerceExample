@@ -36,6 +36,7 @@
         <table class="table table-bordered table-striped mb-none" id="datatable-default">
             <thead>
                 <tr>
+                    <th>Photo</th>
                     <th>Name</th>
                     <th>Sku</th>
                     <th>Price</th>
@@ -49,6 +50,7 @@
                 @foreach (var item in Model.Products)
                 {
                     <tr class="gradeX">
+                        <td><img src = "../../Theme/images/upload/@item.Photo" width="50" height="50" /></td>
                         <td>@item.Name</td>
                         <td>@item.Sku</td>
                         <td>@item.Price</td>
