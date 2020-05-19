@@ -132,7 +132,7 @@
                             <div class="product portfolio-item portfolio-item-style-2">
                                 <div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
                                     <span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
-                                        <a href="@Url.Action("ProductDetail","Product", new { id = item.Id })">
+                                        <a href="@Url.Action("ProductDetail", "Product", new { id = item.Id, seo = Extensions.UrlFriendlyString(item.Name) })">
                                             @if (item.Photo == null)
                                             {
                                                 <img src="../../Theme/images/product-default.jpg" class="img-fluid" alt="">

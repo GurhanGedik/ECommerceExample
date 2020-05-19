@@ -1,8 +1,4 @@
-﻿@using ECommerce.Web.Models
-@model HomePageModel
-
-
-
+﻿@model HomePageModel
 
 <div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1">
     <nav class="collapse">
@@ -11,7 +7,7 @@
             @foreach (var item in Model.Categories)
             {
                 <li class="dropdown">
-                    <a class="dropdown-item dropdown-toggle" href="@Url.Action("CategoryDetail","Category", new { id = item.Id })">
+                    <a class="dropdown-item dropdown-toggle" href="@Url.Action("CategoryDetail", "Category", new { id = item.Id, seo = Extensions.UrlFriendlyString(item.Name) })">
                         @item.Name
                     </a>
                 </li>
