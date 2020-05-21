@@ -29,5 +29,6 @@ namespace ECommerce.Web
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }

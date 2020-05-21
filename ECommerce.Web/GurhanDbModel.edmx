@@ -58,6 +58,16 @@
           <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
           <Property Name="UpdateOnUtc" Type="datetime" />
         </EntityType>
+        <EntityType Name="ShoppingCartItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Product_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -82,11 +92,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShoppingCartItem_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="ShoppingCartItem" Type="Self.ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartItem_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ShoppingCartItem" Type="Self.ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="GurhanModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoppingCartItem" EntityType="Self.ShoppingCartItem" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
@@ -94,6 +129,14 @@
           <AssociationSet Name="FK_Product_Manufacturer" Association="Self.FK_Product_Manufacturer">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartItem_Customer" Association="Self.FK_ShoppingCartItem_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartItem_Product" Association="Self.FK_ShoppingCartItem_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItem" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -124,6 +167,7 @@
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" Nullable="false" />
+          <NavigationProperty Name="ShoppingCartItems" Relationship="GurhanModel.FK_ShoppingCartItem_Customer" FromRole="Customer" ToRole="ShoppingCartItem" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -150,7 +194,16 @@
             <End Role="Manufacturer" EntitySet="Manufacturers" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="ShoppingCartItems" EntityType="GurhanModel.ShoppingCartItem" />
+          <AssociationSet Name="FK_ShoppingCartItem_Customer" Association="GurhanModel.FK_ShoppingCartItem_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCartItem_Product" Association="GurhanModel.FK_ShoppingCartItem_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
@@ -170,6 +223,7 @@
           <NavigationProperty Name="Category" Relationship="GurhanModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Manufacturer" Relationship="GurhanModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ShoppingCartItems" Relationship="GurhanModel.FK_ShoppingCartItem_Product" FromRole="Product" ToRole="ShoppingCartItem" />
         </EntityType>
         <Association Name="FK_Product_Category">
           <End Type="GurhanModel.Category" Role="Category" Multiplicity="0..1" />
@@ -195,7 +249,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="ShoppingCartItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="GurhanModel.FK_ShoppingCartItem_Customer" FromRole="ShoppingCartItem" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="GurhanModel.FK_ShoppingCartItem_Product" FromRole="ShoppingCartItem" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_ShoppingCartItem_Customer">
+          <End Type="GurhanModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="GurhanModel.ShoppingCartItem" Role="ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCartItem_Product">
+          <End Type="GurhanModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="GurhanModel.ShoppingCartItem" Role="ShoppingCartItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingCartItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -254,6 +344,17 @@
                 <ScalarProperty Name="Barcode" ColumnName="Barcode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCartItems">
+            <EntityTypeMapping TypeName="GurhanModel.ShoppingCartItem">
+              <MappingFragment StoreEntitySet="ShoppingCartItem">
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

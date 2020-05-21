@@ -11,7 +11,10 @@ namespace ECommerce.Web.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-            if (Session["FirstName"] == null && Session["LastName"] == null)
+            string userFirstName = Request.Cookies["User"]["FirstName"];
+            string userLastName = Request.Cookies["User"]["LastName"];
+
+            if (userFirstName == null && userLastName == null)
             {
                 return RedirectToAction("SingIn", "../Login");
             }

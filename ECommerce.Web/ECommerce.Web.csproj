@@ -4128,6 +4128,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
@@ -4157,10 +4158,15 @@
     <Compile Include="Models\HomePageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ShoppingCartListModel.cs" />
+    <Compile Include="Models\ShoppingCartModel.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingCartItem.cs">
+      <DependentUpon>GurhanDbModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -4534,6 +4540,7 @@
     <Content Include="Theme\vendor\simple-line-icons\scss\simple-line-icons.scss" />
     <Content Include="Theme\vendor\simple-line-icons\yarn.lock" />
     <Content Include="Views\Shared\_TopMenu.cshtml" />
+    <Content Include="Views\Shared\_ShoppingCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4544,6 +4551,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Theme\images\upload\" />
+    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

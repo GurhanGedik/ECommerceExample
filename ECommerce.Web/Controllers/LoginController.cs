@@ -30,9 +30,17 @@ namespace ECommerce.Web.Controllers
 
             if (User != null)
             {
-                Session.Add("FirstName", User.FirstName);
-                Session.Add("LastName", User.LastName);
                 FormsAuthentication.SetAuthCookie(User.Email, true);
+                //TODO:SOR
+
+                HttpCookie cookie = new HttpCookie("User");
+                cookie.Values.Add("LoginEmail", User.Email);
+                cookie.Values.Add("FirstName", User.FirstName);
+                cookie.Values.Add("LastName", User.LastName);
+                cookie.Values.Add("UserId", Convert.ToString(User.Id));
+
+                cookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(cookie);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -45,6 +53,9 @@ namespace ECommerce.Web.Controllers
         {
             Session.Clear();
             FormsAuthentication.SignOut();
+            HttpCookie cookie = new HttpCookie("User");
+            cookie.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(cookie);
             return RedirectToAction("Index");
         }
     }
