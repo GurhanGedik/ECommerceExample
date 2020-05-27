@@ -21,7 +21,7 @@ namespace ECommerce.Web.Controllers
         public ActionResult ProductDetail(int id)
         {
             ProductModel model = new ProductModel();
-            var product = db.Products.Where(x => x.Id == id).FirstOrDefault();
+            var product = db.Products.Where(x => x.Id == id && x.Active == true && x.Deleted == false).FirstOrDefault();
 
             if (product == null)
             {

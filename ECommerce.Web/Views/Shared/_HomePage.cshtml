@@ -1,11 +1,4 @@
-﻿@{ 
-    string userId = null;
-    if (Request.Cookies["User"] != null)
-    {
-        userId = Request.Cookies["User"]["UserId"];
-    }
-}
-
+﻿
 <!DOCTYPE html>
 
 <html>
@@ -110,7 +103,7 @@
 
                                 @Html.Action("TopMenu", "Home")
 
-                                @if (!String.IsNullOrEmpty(userId))
+                                @if (HttpContext.Current.User.Identity.Name != "")
                                 {
                                     <a href="@Url.Action("Index","Admin/Home")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Panel</a>
                                 }
@@ -118,7 +111,7 @@
                                 {
                                     <a href="@Url.Action("SingIn","Login")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Login</a>
                                 }
-                                @if (!String.IsNullOrEmpty(userId))
+                                @if (HttpContext.Current.User.Identity.Name != "")
                                 {
                                     @Html.Action("CartList", "ShoppingCart")
                                 }

@@ -31,17 +31,6 @@ namespace ECommerce.Web.Controllers
             if (User != null)
             {
                 FormsAuthentication.SetAuthCookie(User.Email, true);
-                //TODO:SOR
-
-                HttpCookie cookie = new HttpCookie("User");
-                cookie.Values.Add("LoginEmail", User.Email);
-                cookie.Values.Add("FirstName", User.FirstName);
-                cookie.Values.Add("LastName", User.LastName);
-                cookie.Values.Add("UserId", Convert.ToString(User.Id));
-
-                cookie.Expires = DateTime.Now.AddDays(1);
-                Response.Cookies.Add(cookie);
-
                 return RedirectToAction("Index", "Home");
             }
 
@@ -51,11 +40,7 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult SingOut()
         {
-            Session.Clear();
             FormsAuthentication.SignOut();
-            HttpCookie cookie = new HttpCookie("User");
-            cookie.Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies.Add(cookie);
             return RedirectToAction("Index");
         }
     }

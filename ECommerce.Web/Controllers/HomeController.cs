@@ -15,7 +15,7 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult TopMenu()
         {
-            var categorys = db.Categories.Where(x => x.Deleted == false).ToList();
+            var categorys = db.Categories.Where(x => x.Deleted == false && x.Published == true).ToList();
             HomePageModel model = new HomePageModel();
 
             foreach (var category in categorys)

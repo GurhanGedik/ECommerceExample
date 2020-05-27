@@ -15,7 +15,7 @@ namespace ECommerce.Web.Controllers
         public ActionResult CategoryDetail(int id)
         {
             CategoryModel model = new CategoryModel();
-            var products = db.Products.Where(x => x.CategoryId == id).ToList();
+            var products = db.Products.Where(x => x.CategoryId == id && x.Active == true && x.Deleted == false).ToList();
 
             foreach (var product in products)
             {

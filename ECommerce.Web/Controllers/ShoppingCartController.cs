@@ -1,4 +1,5 @@
-﻿using ECommerce.Web.Models;
+﻿using ECommerce.Web.Lib;
+using ECommerce.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,17 @@ namespace ECommerce.Web.Controllers
     public class ShoppingCartController : Controller
     {
         GurhanDbEntities db = new GurhanDbEntities();
+        WorkContext workContext = new WorkContext();
 
         public ActionResult CartList()
         {
-            string userId = Request.Cookies["User"]["UserId"];
-            int CustomerId = Convert.ToInt32(userId);
+            var customer = workContext.GetAuthenticatedCustomer();
+            if (customer == null)
+            {
+                return RedirectToAction("SingIn", "Login");
+            }
 
-            var cartList = db.ShoppingCartItems.Where(x => x.CustomerId == CustomerId).ToList();
+            var cartList = db.ShoppingCartItems.Where(x => x.CustomerId == customer.Id).ToList();
             decimal? totalprice = 0;
             ShoppingCartListModel model = new ShoppingCartListModel();
 
@@ -47,27 +52,20 @@ namespace ECommerce.Web.Controllers
         [HttpPost]
         public ActionResult AddProductToCart(int quantity, int productId)
         {
-            string user = String.Empty;
-            if (Request.Cookies["User"] != null)
-            {
-                user = Request.Cookies["User"].Value;
-            }
-            else
+            var customer = workContext.GetAuthenticatedCustomer();
+            if (customer == null)
             {
                 TempData["result"] = "Giriş Yapınız!";
-
                 return RedirectToAction("ProductDetail", "Product", new { id = productId });
             }
 
-            string userId = Request.Cookies["User"]["UserId"];
-            int CustomerId = Convert.ToInt32(userId);
 
-            var ShoppingCarts = db.ShoppingCartItems.FirstOrDefault(x => x.CustomerId == CustomerId && x.ProductId == productId);
+            var ShoppingCarts = db.ShoppingCartItems.FirstOrDefault(x => x.CustomerId == customer.Id && x.ProductId == productId);
 
             if (ShoppingCarts == null)
             {
                 ShoppingCartItem sci = new ShoppingCartItem();
-                sci.CustomerId = CustomerId;
+                sci.CustomerId = customer.Id;
                 sci.ProductId = productId;
                 sci.Quantity = quantity;
                 sci.CreatedOnUtc = DateTime.Now;
@@ -93,14 +91,17 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult DeleteCart(int Id)
         {
-            string userId = Request.Cookies["User"]["UserId"];
-            int CustomerId = Convert.ToInt32(userId);
-            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.Id == Id);
-
-            if (cart.CustomerId == CustomerId)
+            var customer = workContext.GetAuthenticatedCustomer();
+            if (customer == null)
             {
-                ShoppingCartItem deleted = cart;
-                db.ShoppingCartItems.Remove(deleted);
+                return RedirectToAction("SingIn", "Login");
+            }
+
+            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.Id == Id && x.CustomerId == customer.Id);
+
+            if (cart != null)
+            {
+                db.ShoppingCartItems.Remove(cart);
                 db.SaveChanges();
             }
 
@@ -109,10 +110,13 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult ShoppingCart()
         {
-            string userId = Request.Cookies["User"]["UserId"];
-            int CustomerId = Convert.ToInt32(userId);
+            var customer = workContext.GetAuthenticatedCustomer();
+            if (customer == null)
+            {
+                return RedirectToAction("SingIn", "Login");
+            }
 
-            var cartList = db.ShoppingCartItems.Where(x => x.CustomerId == CustomerId).ToList();
+            var cartList = db.ShoppingCartItems.Where(x => x.CustomerId == customer.Id).ToList();
             decimal? totalprice = 0;
             ShoppingCartListModel model = new ShoppingCartListModel();
 
@@ -141,12 +145,15 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult ProductMinus(int Id)
         {
-            string userId = Request.Cookies["User"]["UserId"];
-            int CustomerId = Convert.ToInt32(userId);
+            var customer = workContext.GetAuthenticatedCustomer();
+            if (customer == null)
+            {
+                return RedirectToAction("SingIn", "Login");
+            }
 
-            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.ProductId == Id && x.CustomerId == CustomerId);
+            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.ProductId == Id && x.CustomerId == customer.Id);
 
-            if (cart.CustomerId == CustomerId)
+            if (cart != null)
             {
                 if (cart.Quantity <= 1)
                 {
@@ -164,15 +171,18 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult ProductPlus(int Id)
         {
-            string userId = Request.Cookies["User"]["UserId"];
-            int CustomerId = Convert.ToInt32(userId);
+            var customer = workContext.GetAuthenticatedCustomer();
+            if (customer == null)
+            {
+                return RedirectToAction("SingIn", "Login");
+            }
 
-            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.ProductId == Id && x.CustomerId == CustomerId);
+            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.ProductId == Id && x.CustomerId == customer.Id);
 
-            if (cart == null && CustomerId != 0)
+            if (cart == null && customer.Id != 0)
             {
                 ShoppingCartItem sci = new ShoppingCartItem();
-                sci.CustomerId = CustomerId;
+                sci.CustomerId = customer.Id;
                 sci.ProductId = Id;
                 sci.Quantity = 1;
                 sci.CreatedOnUtc = DateTime.Now;
@@ -184,7 +194,7 @@ namespace ECommerce.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            if (cart.CustomerId == CustomerId)
+            if (cart.CustomerId == customer.Id)
             {
                 cart.Quantity += 1;
                 db.SaveChanges();
