@@ -1,0 +1,175 @@
+﻿@model ShoppingCartListModel
+@{
+    ViewBag.Title = "SingIn";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+<div role="main" class="main">
+
+
+    <section class="section pt-0">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col">
+                    <form class="shop-cart" method="post" action="#">
+
+                        <div class="table-responsive">
+                            <table class="shop-cart-table w-100">
+                                <thead>
+                                    <tr>
+                                        <th class="product-remove"></th>
+                                        <th class="product-thumbnail"></th>
+                                        <th class="product-name"><strong>Product</strong></th>
+                                        <th class="product-price"><strong>Unit Price</strong></th>
+                                        <th class="product-quantity"><strong>Quantity</strong></th>
+                                        <th class="product-subtotal"><strong>Total</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ShoppingCarts)
+                                    {
+                                        <tr class="cart-item">
+                                            <td class="product-remove">
+                                                <a href="@Url.Action("DeleteCart", "ShoppingCart", new { id = @item.Id })"><i class="fas fa-times" aria-label="Remove"></i></a>
+                                            </td>
+                                            <td class="product-thumbnail">
+                                                <img src="../../Theme/images/upload/@item.Photo" class="img-fluid" width="67" alt="" />
+                                            </td>
+                                            <td class="product-name">
+                                                <a href="shop-product-detail-right-sidebar.html">@item.ProductName</a>
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="unit-price">@item.Price ₺</span>
+                                            </td>
+                                            <td class="product-quantity">
+                                                <div class="quantity">
+                                                    <a href="@Url.Action("ProductMinus", "ShoppingCart", new { id = @item.ProductId })" class="minus">-</a>
+                                                    <input type="number" step="1" min="1" name="quantity" value="@item.Quantity" title="Qty" class="qty" size="2">
+                                                    <a href="@Url.Action("ProductPlus", "ShoppingCart", new { id = @item.ProductId})" class="plus">+</a>
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal">
+                                                <span class="sub-total"><strong>@(item.Price * @item.Quantity) ₺</strong></span>
+                                            </td>
+                                        </tr>
+                                    }
+
+
+
+                                    <tr class="border-bottom-0">
+                                        <td colspan="6" class="px-0">
+                                            <div class="row mx-0">
+                                                <div class="col-md-5 px-0 mb-3 mb-md-0">
+                                                    <div class="input-group input-group-style-3 rounded">
+                                                        <input type="text" class="form-control bg-light-5 border-0" placeholder="Enter Coupon Code..." aria-label="Enter Coupon Code">
+                                                        <span class="input-group-btn bg-light-5 p-1">
+                                                            <button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" type="submit">APPLY</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7 text-right px-0">
+                                                    <button class="btn btn-dark btn-outline btn-rounded font-weight-bold btn-h-2 btn-v-3" type="submit">UPDATE CART</button>
+                                                    <a href="shop-checkout.html" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">PROCEED TO CHECKOUT</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <h2 class="font-weight-bold text-4 mb-3">Cart Totals</h2>
+                    <div class="table-responsive">
+                        <table class="cart-totals w-100">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span class="cart-total-label">Shipping</span>
+                                    </td>
+                                    <td>
+                                        <span class="cart-total-value">Free Delivery</span>
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom-0">
+                                    <td>
+                                        <span class="cart-total-label">Total</span>
+                                    </td>
+                                    <td>
+                                        <span class="cart-total-value text-color-primary text-4">@Model.TotalPrice ₺</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+<script>
+
+    //    var why = $('input[name="quantity"]').val();
+
+
+    //  $.ajax({
+    //     url: '/en/myController/GetDataForInvoiceNumber',
+    //     type: 'POST',
+    //      data: why,
+    //     dataType: 'json',
+    //     contentType: 'application/json; charset=utf-8',
+    //     error: function (xhr) {
+    //        alert('Error: ' + xhr.statusText);
+    //     },
+    //     success: function (result) {
+    //        CheckIfInvoiceFound(result);
+    //     },
+    //     async: true,
+    //     processData: false
+    //});
+
+
+
+    var el = document.getElementById('plus');
+    el.addEventListener('click', displayDate);
+
+    function displayDate() {
+        var quantity = $('input[name="quantity"]').val();
+
+
+        var newData = $.ajax({
+            type: "POST",
+            url: '../ShoppingCart/AddProductToCart',
+            dataType: "json",
+            data: { quantity: quantity }
+        });
+    }
+
+
+
+    //    $('.plus').on('click', function (e) {
+    //    var quantity = $('input[name="quantity"]').val();
+
+
+    //    var newData = $.ajax({
+    //        type: "POST",
+    //        url: '../ShoppingCart/AddProductToCart',
+    //        dataType: "json",
+    //        data: { quantity: quantity }
+    //    });
+
+    //});
+
+
+
+
+
+
+</script>

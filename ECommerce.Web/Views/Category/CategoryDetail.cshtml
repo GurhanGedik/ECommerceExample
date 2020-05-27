@@ -144,7 +144,7 @@
                                         </a>
                                         <span class="image-frame-action">
                                             @*Ajaxs araştır*@
-                                            <a href="@Url.Action("AddProductToCartTwo", "ShoppingCart", new { quantity = "1", productId =item.Id })" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
+                                            <a href="@Url.Action("ProductPlus", "ShoppingCart", new { id = @item.Id })" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">ADD TO CART</a>
                                         </span>
                                     </span>
                                 </div>

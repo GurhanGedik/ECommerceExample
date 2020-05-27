@@ -1658,6 +1658,7 @@
       <DependentUpon>GurhanDbModel.edmx</DependentUpon>
       <LastGenOutput>GurhanDbModel.cs</LastGenOutput>
     </Content>
+    <Content Include="shop-cart.html" />
     <Content Include="Theme\css\custom.css" />
     <Content Include="Theme\css\demos\demo-architecture.css" />
     <Content Include="Theme\css\demos\demo-business-consulting.css" />
@@ -4541,6 +4542,7 @@
     <Content Include="Theme\vendor\simple-line-icons\yarn.lock" />
     <Content Include="Views\Shared\_TopMenu.cshtml" />
     <Content Include="Views\Shared\_ShoppingCart.cshtml" />
+    <Content Include="Views\ShoppingCart\ShoppingCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4551,7 +4553,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Theme\images\upload\" />
-    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

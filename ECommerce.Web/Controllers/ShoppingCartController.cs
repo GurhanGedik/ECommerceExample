@@ -13,7 +13,10 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult CartList()
         {
-            var cartList = db.ShoppingCartItems.ToList();
+            string userId = Request.Cookies["User"]["UserId"];
+            int CustomerId = Convert.ToInt32(userId);
+
+            var cartList = db.ShoppingCartItems.Where(x => x.CustomerId == CustomerId).ToList();
             decimal? totalprice = 0;
             ShoppingCartListModel model = new ShoppingCartListModel();
 
@@ -40,7 +43,7 @@ namespace ECommerce.Web.Controllers
             return PartialView("_ShoppingCart", model);
 
         }
-        
+
         [HttpPost]
         public ActionResult AddProductToCart(int quantity, int productId)
         {
@@ -90,11 +93,104 @@ namespace ECommerce.Web.Controllers
 
         public ActionResult DeleteCart(int Id)
         {
-            //kullanıcı kontrolü yapılacak
-            ShoppingCartItem deleted = db.ShoppingCartItems.SingleOrDefault(x => x.Id == Id);
-            db.ShoppingCartItems.Remove(deleted);
-            db.SaveChanges();
+            string userId = Request.Cookies["User"]["UserId"];
+            int CustomerId = Convert.ToInt32(userId);
+            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.Id == Id);
+
+            if (cart.CustomerId == CustomerId)
+            {
+                ShoppingCartItem deleted = cart;
+                db.ShoppingCartItems.Remove(deleted);
+                db.SaveChanges();
+            }
+
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult ShoppingCart()
+        {
+            string userId = Request.Cookies["User"]["UserId"];
+            int CustomerId = Convert.ToInt32(userId);
+
+            var cartList = db.ShoppingCartItems.Where(x => x.CustomerId == CustomerId).ToList();
+            decimal? totalprice = 0;
+            ShoppingCartListModel model = new ShoppingCartListModel();
+
+
+            foreach (var item in cartList)
+            {
+                var product = db.Products.FirstOrDefault(x => x.Id == item.ProductId);
+
+                var ShoppingCart = new ShoppingCartModel();
+                ShoppingCart.Id = item.Id;
+                ShoppingCart.Quantity = item.Quantity;
+                ShoppingCart.ProductName = product.Name;
+                ShoppingCart.ProductId = product.Id;
+                ShoppingCart.Price = product.Price;
+                ShoppingCart.Photo = product.Photo;
+                ShoppingCart.CustomerId = item.CustomerId;
+                totalprice += product.Price * item.Quantity;
+
+                model.ShoppingCarts.Add(ShoppingCart);
+            }
+            model.TotalPrice = totalprice;
+            model.TotalQuantity = cartList.Count;
+
+            return View(model);
+        }
+
+        public ActionResult ProductMinus(int Id)
+        {
+            string userId = Request.Cookies["User"]["UserId"];
+            int CustomerId = Convert.ToInt32(userId);
+
+            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.ProductId == Id && x.CustomerId == CustomerId);
+
+            if (cart.CustomerId == CustomerId)
+            {
+                if (cart.Quantity <= 1)
+                {
+                    ShoppingCartItem deleted = cart;
+                    db.ShoppingCartItems.Remove(deleted);
+                    db.SaveChanges();
+                    return RedirectToAction("ShoppingCart", "ShoppingCart");
+                }
+                cart.Quantity -= 1;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("ShoppingCart", "ShoppingCart");
+        }
+
+        public ActionResult ProductPlus(int Id)
+        {
+            string userId = Request.Cookies["User"]["UserId"];
+            int CustomerId = Convert.ToInt32(userId);
+
+            var cart = db.ShoppingCartItems.SingleOrDefault(x => x.ProductId == Id && x.CustomerId == CustomerId);
+
+            if (cart == null && CustomerId != 0)
+            {
+                ShoppingCartItem sci = new ShoppingCartItem();
+                sci.CustomerId = CustomerId;
+                sci.ProductId = Id;
+                sci.Quantity = 1;
+                sci.CreatedOnUtc = DateTime.Now;
+
+                db.ShoppingCartItems.Add(sci);
+                db.SaveChanges();
+
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (cart.CustomerId == CustomerId)
+            {
+                cart.Quantity += 1;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("ShoppingCart", "ShoppingCart");
         }
     }
 }
