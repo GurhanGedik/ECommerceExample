@@ -17,6 +17,7 @@ namespace ECommerce.Web
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
+            this.CustomerAddressMappings = new HashSet<CustomerAddressMapping>();
             this.ShoppingCartItems = new HashSet<ShoppingCartItem>();
         }
     
@@ -29,6 +30,8 @@ namespace ECommerce.Web
         public bool Deleted { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerAddressMapping> CustomerAddressMappings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
     }

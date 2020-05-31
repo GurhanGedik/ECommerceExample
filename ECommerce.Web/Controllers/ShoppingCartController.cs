@@ -202,5 +202,63 @@ namespace ECommerce.Web.Controllers
 
             return RedirectToAction("ShoppingCart", "ShoppingCart");
         }
+
+        public ActionResult AddressCheck()
+        {
+            var customer = workContext.GetAuthenticatedCustomer();
+            if (customer == null)
+            {
+                return RedirectToAction("SingIn", "Login");
+            }
+
+            var cartList = db.ShoppingCartItems.Where(x => x.CustomerId == customer.Id).ToList();
+            AddressCheckModel model = new AddressCheckModel();
+
+            #region ShoppingCart
+
+            decimal? totalprice = 0;
+            foreach (var item in cartList)
+            {
+                var product = db.Products.FirstOrDefault(x => x.Id == item.ProductId);
+
+                var ShoppingCart = new ShoppingCartModel();
+                ShoppingCart.Id = item.Id;
+                ShoppingCart.Quantity = item.Quantity;
+                ShoppingCart.ProductName = product.Name;
+                ShoppingCart.ProductId = product.Id;
+                ShoppingCart.Price = product.Price;
+                ShoppingCart.Photo = product.Photo;
+                ShoppingCart.CustomerId = item.CustomerId;
+                totalprice += product.Price * item.Quantity;
+
+                model.ShoppingCarts.Add(ShoppingCart);
+            }
+            model.TotalPrice = totalprice;
+            model.TotalQuantity = cartList.Count;
+
+            #endregion
+
+            #region Address
+            var cam = db.CustomerAddressMappings.Where(x => x.CustomerId == customer.Id).ToList();
+            foreach (var addressId in cam)
+            {
+                var address = db.Addresses.FirstOrDefault(x => x.Id == addressId.AddressId);
+
+                model.AvailableAddress.Add(new SelectListItem { Text = address.FirsName, Value = address.Id.ToString() });
+                
+            }
+            #endregion
+
+            #region Cargo
+            model.AvailableCargo.Add(new SelectListItem { Text = "Aras Kargo", Value = "Aras Kargo" });
+            model.AvailableCargo.Add(new SelectListItem { Text = "Yurtiçi Kargo", Value = "Yurtiçi Kargo" });
+            model.AvailableCargo.Add(new SelectListItem { Text = "MNG Kargo", Value = "MNG Kargo" });
+            model.AvailableCargo.Add(new SelectListItem { Text = "UPS Kargo", Value = "UPS Kargo" });
+            #endregion
+
+
+
+            return View(model);
+        }
     }
 }

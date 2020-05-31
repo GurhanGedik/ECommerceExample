@@ -1,5 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="GurhanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GurhanDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="GurhanModel.Address" />
+    <EntitySet Name="Categories" EntityType="GurhanModel.Category" />
+    <EntitySet Name="Counties" EntityType="GurhanModel.County" />
+    <EntitySet Name="Customers" EntityType="GurhanModel.Customer" />
+    <EntitySet Name="CustomerAddressMappings" EntityType="GurhanModel.CustomerAddressMapping" />
+    <EntitySet Name="Manufacturers" EntityType="GurhanModel.Manufacturer" />
+    <EntitySet Name="Orders" EntityType="GurhanModel.Order" />
+    <EntitySet Name="OrderItems" EntityType="GurhanModel.OrderItem" />
+    <EntitySet Name="Products" EntityType="GurhanModel.Product" />
+    <EntitySet Name="Provinces" EntityType="GurhanModel.Province" />
+    <EntitySet Name="ShoppingCartItems" EntityType="GurhanModel.ShoppingCartItem" />
+    <EntitySet Name="sysdiagrams" EntityType="GurhanModel.sysdiagram" />
+    <AssociationSet Name="FK_Product_Category" Association="GurhanModel.FK_Product_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerAddressMapping_Customer" Association="GurhanModel.FK_CustomerAddressMapping_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="CustomerAddressMapping" EntitySet="CustomerAddressMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShoppingCartItem_Customer" Association="GurhanModel.FK_ShoppingCartItem_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Manufacturer" Association="GurhanModel.FK_Product_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShoppingCartItem_Product" Association="GurhanModel.FK_ShoppingCartItem_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProvinceId" Type="Int32" />
+    <Property Name="CountiesId" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
+  </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="Id" />
@@ -8,9 +56,17 @@
     <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Published" Type="Boolean" Nullable="false" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Products" Relationship="GurhanModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="County">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="District" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -23,8 +79,18 @@
     <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CustomerAddressMappings" Relationship="GurhanModel.FK_CustomerAddressMapping_Customer" FromRole="Customer" ToRole="CustomerAddressMapping" />
     <NavigationProperty Name="ShoppingCartItems" Relationship="GurhanModel.FK_ShoppingCartItem_Customer" FromRole="Customer" ToRole="ShoppingCartItem" />
+  </EntityType>
+  <EntityType Name="CustomerAddressMapping">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="AddressId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="GurhanModel.FK_CustomerAddressMapping_Customer" FromRole="CustomerAddressMapping" ToRole="Customer" />
   </EntityType>
   <EntityType Name="Manufacturer">
     <Key>
@@ -34,33 +100,34 @@
     <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Published" Type="Boolean" Nullable="false" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
-    <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Products" Relationship="GurhanModel.FK_Product_Manufacturer" FromRole="Manufacturer" ToRole="Product" />
   </EntityType>
-  <EntityContainer Name="GurhanDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Categories" EntityType="Self.Category" />
-    <EntitySet Name="Customers" EntityType="Self.Customer" />
-    <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
-    <EntitySet Name="Products" EntityType="GurhanModel.Product" />
-    <AssociationSet Name="FK_Product_Category" Association="GurhanModel.FK_Product_Category">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Product_Manufacturer" Association="GurhanModel.FK_Product_Manufacturer">
-      <End Role="Manufacturer" EntitySet="Manufacturers" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <EntitySet Name="ShoppingCartItems" EntityType="GurhanModel.ShoppingCartItem" />
-    <AssociationSet Name="FK_ShoppingCartItem_Customer" Association="GurhanModel.FK_ShoppingCartItem_Customer">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ShoppingCartItem_Product" Association="GurhanModel.FK_ShoppingCartItem_Product">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="ShoppingCartItem" EntitySet="ShoppingCartItems" />
-    </AssociationSet>
-  </EntityContainer>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="AddressId" Type="Int32" />
+    <Property Name="ShippingMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderStatusId" Type="Int32" />
+    <Property Name="ShippingStatusId" Type="Int32" />
+    <Property Name="OrderTotal" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
+  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="Id" />
@@ -75,12 +142,41 @@
     <Property Name="ManufacturerId" Type="Int32" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateOnUtc" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Category" Relationship="GurhanModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
     <NavigationProperty Name="Manufacturer" Relationship="GurhanModel.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
-    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="ShoppingCartItems" Relationship="GurhanModel.FK_ShoppingCartItem_Product" FromRole="Product" ToRole="ShoppingCartItem" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShoppingCartItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="GurhanModel.FK_ShoppingCartItem_Customer" FromRole="ShoppingCartItem" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="GurhanModel.FK_ShoppingCartItem_Product" FromRole="ShoppingCartItem" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_Product_Category">
     <End Type="GurhanModel.Category" Role="Category" Multiplicity="0..1" />
@@ -94,30 +190,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Product_Manufacturer">
-    <End Type="GurhanModel.Manufacturer" Role="Manufacturer" Multiplicity="0..1" />
-    <End Type="GurhanModel.Product" Role="Product" Multiplicity="*" />
+  <Association Name="FK_CustomerAddressMapping_Customer">
+    <End Type="GurhanModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="GurhanModel.CustomerAddressMapping" Role="CustomerAddressMapping" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Manufacturer">
+      <Principal Role="Customer">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="ManufacturerId" />
+      <Dependent Role="CustomerAddressMapping">
+        <PropertyRef Name="CustomerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="ShoppingCartItem">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CustomerId" Type="Int32" Nullable="false" />
-    <Property Name="ProductId" Type="Int32" Nullable="false" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Customer" Relationship="GurhanModel.FK_ShoppingCartItem_Customer" FromRole="ShoppingCartItem" ToRole="Customer" />
-    <NavigationProperty Name="Product" Relationship="GurhanModel.FK_ShoppingCartItem_Product" FromRole="ShoppingCartItem" ToRole="Product" />
-  </EntityType>
   <Association Name="FK_ShoppingCartItem_Customer">
     <End Type="GurhanModel.Customer" Role="Customer" Multiplicity="1" />
     <End Type="GurhanModel.ShoppingCartItem" Role="ShoppingCartItem" Multiplicity="*" />
@@ -127,6 +211,18 @@
       </Principal>
       <Dependent Role="ShoppingCartItem">
         <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Manufacturer">
+    <End Type="GurhanModel.Manufacturer" Role="Manufacturer" Multiplicity="0..1" />
+    <End Type="GurhanModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ManufacturerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

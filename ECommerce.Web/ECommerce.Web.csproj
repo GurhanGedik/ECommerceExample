@@ -1658,7 +1658,6 @@
       <DependentUpon>GurhanDbModel.edmx</DependentUpon>
       <LastGenOutput>GurhanDbModel.cs</LastGenOutput>
     </Content>
-    <Content Include="shop-cart.html" />
     <Content Include="Theme\css\custom.css" />
     <Content Include="Theme\css\demos\demo-architecture.css" />
     <Content Include="Theme\css\demos\demo-business-consulting.css" />
@@ -4106,6 +4105,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>GurhanDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
@@ -4126,11 +4128,19 @@
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="County.cs">
+      <DependentUpon>GurhanDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
+      <DependentUpon>GurhanDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerAddressMapping.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -4152,21 +4162,38 @@
       <DependentUpon>GurhanDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Lib\Extensions.cs" />
+    <Compile Include="Lib\OrderStatusEnum.cs" />
+    <Compile Include="Lib\ShippingStatusEnum.cs" />
     <Compile Include="Lib\WorkContext.cs" />
     <Compile Include="Manufacturer.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddressCheckModel.cs" />
+    <Compile Include="Models\AddressListModel.cs" />
+    <Compile Include="Models\AddressModel.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\HomePageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ShoppingCartListModel.cs" />
     <Compile Include="Models\ShoppingCartModel.cs" />
+    <Compile Include="Order.cs">
+      <DependentUpon>GurhanDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderItem.cs">
+      <DependentUpon>GurhanDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Province.cs">
+      <DependentUpon>GurhanDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ShoppingCartItem.cs">
+      <DependentUpon>GurhanDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>GurhanDbModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -4545,6 +4572,10 @@
     <Content Include="Views\Shared\_TopMenu.cshtml" />
     <Content Include="Views\Shared\_ShoppingCart.cshtml" />
     <Content Include="Views\ShoppingCart\ShoppingCart.cshtml" />
+    <Content Include="Views\Customer\AddAddress.cshtml" />
+    <Content Include="Views\Customer\AddressList.cshtml" />
+    <Content Include="Views\Customer\AddressEdit.cshtml" />
+    <Content Include="Views\ShoppingCart\AddressCheck.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4555,6 +4586,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Theme\images\upload\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

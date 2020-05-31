@@ -5,16 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9df4e0e4404447a3b67337add25f0bbd" Name="Diagram1">
-        <EntityTypeShape EntityType="GurhanModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GurhanModel.Customer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GurhanModel.Manufacturer" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GurhanModel.Product" Width="1.5" PointX="6.875" PointY="0.75" />
+        <EntityTypeShape EntityType="GurhanModel.Address" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GurhanModel.Category" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="GurhanModel.County" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GurhanModel.Customer" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="GurhanModel.CustomerAddressMapping" Width="1.5" PointX="5.25" PointY="7.25" />
+        <EntityTypeShape EntityType="GurhanModel.Manufacturer" Width="1.5" PointX="0.75" PointY="6.875" />
+        <EntityTypeShape EntityType="GurhanModel.Order" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="GurhanModel.OrderItem" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GurhanModel.Product" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="GurhanModel.Province" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GurhanModel.ShoppingCartItem" Width="1.5" PointX="5.25" PointY="1.875" />
+        <EntityTypeShape EntityType="GurhanModel.sysdiagram" Width="1.5" PointX="9.75" PointY="6.75" />
         <AssociationConnector Association="GurhanModel.FK_Product_Category" />
-        <AssociationConnector Association="GurhanModel.FK_Product_Manufacturer" />
-        <EntityTypeShape EntityType="GurhanModel.ShoppingCartItem" Width="1.5" PointX="9.125" PointY="1.625" />
+        <AssociationConnector Association="GurhanModel.FK_CustomerAddressMapping_Customer" />
         <AssociationConnector Association="GurhanModel.FK_ShoppingCartItem_Customer" />
+        <AssociationConnector Association="GurhanModel.FK_Product_Manufacturer" />
         <AssociationConnector Association="GurhanModel.FK_ShoppingCartItem_Product" />
-        </Diagram>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

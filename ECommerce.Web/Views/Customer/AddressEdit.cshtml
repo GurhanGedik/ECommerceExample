@@ -1,0 +1,88 @@
+﻿@using ECommerce.Web.Models;
+@model AddressModel
+@{
+    ViewBag.Title = "AddAddress";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @using (Html.BeginForm("AddressEdit", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row mb-5">
+                        <div class="col-md-12 mb-5 mb-md-0">
+                            <h2 class="font-weight-bold mb-3">Edit Address</h2>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="text-color-dark font-weight-semibold" for="billing_name">FİRST NAME:</label>
+                                    @Html.EditorFor(model => model.FirsName, new { htmlAttributes = new { @class = "form-control line-height-1 bg-light-5" } })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="text-color-dark font-weight-semibold" for="billing_last_name">LAST NAME:</label>
+                                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control line-height-1 bg-light-5" } })
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label class="text-color-dark font-weight-semibold" for="billing_address">ADDRESS:</label>
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control line-height-1 bg-light-5" } })
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="text-color-dark font-weight-semibold" for="billing_city">CITY:</label>
+                                    @Html.DropDownListFor(model => model.ProvinceId, Model.AvailableProvinces, new { @class = "form-control line-height-1 bg-light-5" })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="text-color-dark font-weight-semibold" for="billing_city">STATE PROVİNCE:</label>
+                                    @Html.DropDownListFor(model => model.CountiesId, Model.AvailableCounties, new { @class = "form-control line-height-1 bg-light-5" })
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="text-color-dark font-weight-semibold" for="billing_email">EMAIL ADDRESS:</label>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control line-height-1 bg-light-5" } })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="text-color-dark font-weight-semibold" for="billing_phone">PHONE:</label>
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control line-height-1 bg-light-5" } })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col text-right">
+                            <button class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3" type="submit">ADD</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ProvinceId").change(function () {
+            $.ajax({
+                url: '/Customer/CountiesId',
+                data: { id: $(this).val() },
+                dataType: "JSON",
+                success: function (result) {
+                    var provinces = $("#CountiesId");
+                    provinces.empty();
+                    $.each(result, function (i, item) {
+                        provinces.append($("<option></option>").attr("value", item.Value)
+                            .html(item.Text));
+                    });
+                }
+            });
+        });
+    });
+</script>

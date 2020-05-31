@@ -1,0 +1,48 @@
+﻿@using ECommerce.Web.Models
+@model AddressListModel
+@{
+    ViewBag.Title = "AddressList";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+<div class="container mb-5 pb-3 pt-3">
+
+    <div class="row  mb-5">
+
+        @foreach (var item in Model.Address)
+        {
+
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0 mt-4">
+                <a href="@Url.Action("AddressEdit", "Customer", new { id = item.Id })">
+                    <div class="card bg-primary-2 border-0">
+                        <div class="card-body p-5">
+
+                            <h3 class="font-weight-bold text-color-light mb-3">@item.FirsName @item.LastName</h3>
+                            <span class="top-sub-title text-color-light opacity-5">@item.Email</span><br />
+                            <span class="top-sub-title text-color-light opacity-5">@item.Phone</span>
+                            <p class="text-color-light opacity-7 mb-0">@item.Address</p>
+                            @Html.ActionLink("Delete", "AddressDelete", new { @id = item.Id }, new { @class = "mb-xs mt-xs mr-xs btn btn-sm btn-danger" })
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        }
+
+        <div class="col-md-6 col-lg-4 mb-5 mb-lg-0 mt-4">
+            <a href="@Url.Action("AddAddress","Customer")">
+                <div class="card bg-primary-4 border-0 text-center">
+                    <div class="card-body p-5">
+                        <h3 class="font-weight-bold text-color-light mb-3">ADD ADDRESS</h3>
+                        <i class="fas fa-plus text-white-50 " style="font-size:70px;    "></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+
+
+</div>
+

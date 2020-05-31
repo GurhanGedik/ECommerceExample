@@ -105,7 +105,33 @@
 
                                 @if (HttpContext.Current.User.Identity.Name != "")
                                 {
-                                    <a href="@Url.Action("Index","Admin/Home")" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1">Panel</a>
+                                    <a href="" class="btn btn-link text-color-default font-weight-bold order-3 d-none d-sm-block ml-auto mr-2 pt-1 text-1"></a>
+
+                                    <div class="mini-cart order-4">
+
+
+
+                                        <span class="font-weight-bold font-primary">Panel</span>
+                                        <div class="mini-cart-icon">
+                                            <img src="img/icons/cart-bag.svg" class="img-fluid" alt="" />
+                                        </div>
+                                        <div class="mini-cart-content">
+                                            <div class="inner-wrapper bg-light rounded">
+
+                                                <div class="mini-cart-actions">
+                                                    <div class="row">
+                                                        <div class="col-12 pr-1">
+                                                            <a href="@Url.Action("Index","Admin/Home")" class="btn btn-dark font-weight-bold rounded text-0">Panel</a>
+                                                        </div>
+                                                        <div class="col-12 mt-1 pr-1">
+                                                            <a href="@Url.Action("AddressList","Customer")" class="btn btn-dark font-weight-bold rounded text-0">Address</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 }
                                 else
                                 {

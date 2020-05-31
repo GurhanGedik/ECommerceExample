@@ -30,9 +30,9 @@ namespace ECommerce.Web
         public Nullable<int> ManufacturerId { get; set; }
         public bool Active { get; set; }
         public bool Deleted { get; set; }
+        public string Photo { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
         public Nullable<System.DateTime> UpdateOnUtc { get; set; }
-        public string Photo { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
